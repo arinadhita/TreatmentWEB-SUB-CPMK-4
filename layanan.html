@@ -1,6 +1,15 @@
+<!-- ============================================================
+    LAYANAN.HTML - Halaman Daftar Layanan KlinikSehat
+    Menampilkan 8 layanan kesehatan dalam bentuk card
+    Tujuan: Informasi layanan & arahkan ke pemesanan
+    Navigasi: Beranda | Layanan (aktif) | Pesan Janji | Riwayat
+     ============================================================ -->
 <!DOCTYPE html>
 <html lang="id">
 <head>
+    <!-- ============================================================
+    META & JUDUL HALAMAN
+    ============================================================ -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KlinikSehat - Layanan</title>
@@ -8,12 +17,33 @@
 </head>
 <body>
 
-    <!-- ===================== HEADER ===================== -->
+    <!-- ============================================================
+    HEADER - BAGIAN ATAS HALAMAN
+    Logo dan nama klinik dengan animasi.
+    ============================================================ -->
     <header>
-        <h1>🏥 KlinikSehat</h1>
-        <p>Sistem Informasi Pelayanan Kesehatan</p>
+        <div class="header-container">
+            <div class="header-left">
+                <!-- Icon SVG (Simbol Kesehatan) -->
+                <div class="header-icon">
+                    <svg viewBox="0 0 100 100" width="50" height="50">
+                        <rect x="35" y="10" width="30" height="80" rx="4" fill="white" />
+                        <rect x="10" y="35" width="80" height="30" rx="4" fill="white" />
+                    </svg>
+                </div>
+                <!-- Teks Header dengan Animasi Slide Down -->
+                <div class="header-text">
+                    <h1 class="animasi-tulisan">🏥 KlinikSehat</h1>
+                    <p class="animasi-tulisan-delay">Sistem Informasi Pelayanan Kesehatan</p>
+                </div>
+            </div>
+        </div>
     </header>
-    <!-- ===================== NAVIGASI ===================== -->
+
+    <!-- ============================================================
+    NAVIGASI - MENU UTAMA
+    Link antar halaman, class "active" menandakan halaman saat ini.
+    ============================================================ -->
     <nav>
         <ul>
             <li><a href="index.html">Beranda</a></li>
@@ -22,8 +52,201 @@
             <li><a href="riwayat.html">Riwayat</a></li>
         </ul>
     </nav>
-    <!-- ===================== KONTEN UTAMA ===================== -->
+
+    <!-- ============================================================
+    MAIN - KONTEN UTAMA HALAMAN
+    ============================================================ -->
     <main>
 
+        <!-- ============================================================
+        SECTION 1: HERO LAYANAN
+        Banner utama halaman layanan dengan tombol CTA.
+        ============================================================ -->
+        <section class="hero fade-in" style="background: linear-gradient(135deg, #A93226, #C0392B);">
+            <div class="hero-content" style="flex-direction: column; text-align: center;">
+                <div class="hero-text" style="min-width: unset;">
+                    <h2>🩺 Layanan Kesehatan KlinikSehat</h2>
+                    <p>Berikut adalah daftar layanan kesehatan yang tersedia di KlinikSehat.</p>
+                    <p style="margin-top: 0.5rem;">
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================
+        SECTION 2: DAFTAR LAYANAN (GRID CARD)
+        Menampilkan 8 layanan dalam bentuk card dengan gambar full.
+        ============================================================ -->
+        <section class="fade-in" style="animation-delay: 0.1s;">
+            <h2>Daftar Layanan</h2>
+            <p style="color: #64748b; margin-bottom: 1.5rem;">Pilih layanan yang Anda butuhkan, lalu klik tombol "Buat Janji" di atas.</p>
+
+            <div class="layanan-grid">
+
+                <!-- ===== LAYANAN 1: Konsultasi Umum ===== -->
+                <div class="layanan-card">
+                    <!-- Gambar full dengan overlay teks -->
+                    <div class="layanan-gambar-full" style="background-image: url('picture/umum.png');">
+                        <div class="layanan-overlay">
+                            <h3>Konsultasi Umum</h3>
+                            <p>Konsultasi dengan dokter umum untuk keluhan kesehatan ringan hingga sedang.</p>
+                            <div class="layanan-footer">
+                                <span class="badge-harga">Rp 150.000</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ===== LAYANAN 2: Konsultasi Jantung ===== -->
+                <div class="layanan-card">
+                    <div class="layanan-gambar-full" style="background-image: url('picture/jantung.png');">
+                        <div class="layanan-overlay">
+                            <h3>Konsultasi Jantung</h3>
+                            <p>Pemeriksaan dan konsultasi dengan dokter spesialis jantung (kardiologi).</p>
+                            <div class="layanan-footer">
+                                <span class="badge-harga">Rp 350.000</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ===== LAYANAN 3: Perawatan Gigi ===== -->
+                <div class="layanan-card">
+                    <div class="layanan-gambar-full" style="background-image: url('picture/gigi.png');">
+                        <div class="layanan-overlay">
+                            <h3>Perawatan Gigi</h3>
+                            <p>Perawatan gigi lengkap: pembersihan, tambal, cabut, dan perawatan saluran akar.</p>
+                            <div class="layanan-footer">
+                                <span class="badge-harga">Rp 200.000</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ===== LAYANAN 4: Konsultasi Anak ===== -->
+                <div class="layanan-card">
+                    <div class="layanan-gambar-full" style="background-image: url('picture/anak.png');">
+                        <div class="layanan-overlay">
+                            <h3>Konsultasi Anak</h3>
+                            <p>Konsultasi tumbuh kembang anak dengan dokter spesialis anak (pediatri).</p>
+                            <div class="layanan-footer">
+                                <span class="badge-harga">Rp 200.000</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ===== LAYANAN 5: Konsultasi Psikologi ===== -->
+                <div class="layanan-card">
+                    <div class="layanan-gambar-full" style="background-image: url('picture/psikologi.png');">
+                        <div class="layanan-overlay">
+                            <h3>Konsultasi Psikologi</h3>
+                            <p>Konsultasi kesehatan mental dengan psikolog profesional.</p>
+                            <div class="layanan-footer">
+                                <span class="badge-harga">Rp 250.000</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ===== LAYANAN 6: Vaksinasi ===== -->
+                <div class="layanan-card">
+                    <div class="layanan-gambar-full" style="background-image: url('picture/vaksinasi.png');">
+                        <div class="layanan-overlay">
+                            <h3>Vaksinasi</h3>
+                            <p>Layanan vaksinasi untuk berbagai jenis vaksin (HIV, Hepatitis, Vaksinasi Anak dll).</p>
+                            <div class="layanan-footer">
+                                <span class="badge-harga">Rp 100.000</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ===== LAYANAN 7: Laboratorium ===== -->
+                <div class="layanan-card">
+                    <div class="layanan-gambar-full" style="background-image: url('picture/laboratorium.png');">
+                        <div class="layanan-overlay">
+                            <h3>Laboratorium</h3>
+                            <p>Pemeriksaan laboratorium: darah, urine, gula darah, kolesterol, dan lainnya.</p>
+                            <div class="layanan-footer">
+                                <span class="badge-harga">Rp 180.000</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ===== LAYANAN 8: Rontgen / USG ===== -->
+                <div class="layanan-card">
+                    <div class="layanan-gambar-full" style="background-image: url('picture/rontgen.png');">
+                        <div class="layanan-overlay">
+                            <h3>Rontgen / USG</h3>
+                            <p>Pemeriksaan radiologi: rontgen, USG, dan pemeriksaan pencitraan lainnya.</p>
+                            <div class="layanan-footer">
+                                <span class="badge-harga">Rp 300.000</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ============================================================
+        SECTION 3: INFORMASI TAMBAHAN
+        Menampilkan catatan penting untuk pasien.
+        ============================================================ -->
+        <section class="fade-in" style="animation-delay: 0.2s;">
+            <div style="background: #fdf2f0; border-radius: 16px; padding: 1.8rem 2rem; border-left: 4px solid #A93226;">
+                <h3 style="color: #A93226; margin-top: 0;">📌 Catatan Penting</h3>
+                <ul style="list-style: none; padding: 0; margin-top: 0.5rem;">
+                    <li style="padding: 0.3rem 0; padding-left: 1.5rem; position: relative; font-size: 0.95rem;">
+                        - Janji temu harus dikonfirmasi minimal 1 hari sebelum jadwal
+                    </li>
+                    <li style="padding: 0.3rem 0; padding-left: 1.5rem; position: relative; font-size: 0.95rem;">
+                        - Pasien diharapkan datang 15 menit lebih awal
+                    </li>
+                    <li style="padding: 0.3rem 0; padding-left: 1.5rem; position: relative; font-size: 0.95rem;">
+                        - Bawa kartu identitas dan kartu BPJS/KIS jika ada
+                    </li>
+                    <li style="padding: 0.3rem 0; padding-left: 1.5rem; position: relative; font-size: 0.95rem;">
+                        - Pembatalan janji dapat dilakukan maksimal 2 jam sebelum jadwal
+                    </li>
+                    <li style="padding: 0.3rem 0; padding-left: 1.5rem; position: relative; font-size: 0.95rem;">
+                        - Untuk layanan darurat, hubungi (061) 555-1284
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- ============================================================
+        SECTION 4: CTA SECTION
+        Call to Action untuk mendorong pengguna membuat janji.
+        ============================================================ -->
+        <section class="cta-section fade-in" style="animation-delay: 0.3s;">
+            <h2 style="color: white;">Siap Membuat Janji?</h2>
+            <p style="opacity: 0.9; margin-bottom: 1.5rem;">Klik tombol di bawah untuk membuat janji dengan dokter pilihan Anda.</p>
+            
+            <a href="pesanan.html" class="btn-janji-capsule">
+                📅 Buat Janji Sekarang
+            </a>
+        </section>
+
+    </main>
+
+    <!-- ============================================================
+    FOOTER - BAGIAN BAWAH HALAMAN
+    Informasi hak cipta dan kontak klinik.
+    ============================================================ -->
+    <footer>
+        <p>&copy; 2026 <span>KlinikSehat</span> - Sistem Informasi Pelayanan Kesehatan</p>
+        <p>Jl. Beringin No. 46 Psr V, Kota Medan | (061) 555-1289 | info@kliniksehat.id</p>
+    </footer>
+
+    <!-- ============================================================
+    JAVASCRIPT EKSTERNAL
+    Menghubungkan ke file script.js untuk fungsi interaktif.
+    ============================================================ -->
+    <script src="js/script.js"></script>
 </body>
 </html>

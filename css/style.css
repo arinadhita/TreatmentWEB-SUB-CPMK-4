@@ -64,3 +64,139 @@ main {
     position: relative;
     overflow: hidden;
 }
+
+
+
+/* ============================================================
+   LAYANAN.CSS - Halaman Layanan
+   ============================================================ */
+
+/* ============================
+   LAYANAN GRID (dengan gambar)
+   ============================ */
+.layanan-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.layanan-card {
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid #e9edf2;
+    transition: all 0.3s ease;
+    background: white;
+}
+
+.layanan-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 36px rgba(0,0,0,0.06);
+}
+
+.layanan-gambar-full {
+    width: 100%;
+    height: 180px;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+.layanan-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1.2rem 1rem 0.8rem;
+    background: linear-gradient(transparent, rgba(169, 50, 38, 0.85));
+    color: white;
+    text-align: center;
+}
+
+.layanan-overlay h3 {
+    color: white;
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin: 0 0 0.1rem;
+}
+
+.layanan-overlay p {
+    font-size: 0.8rem;
+    opacity: 0.9;
+    margin: 0 0 0.2rem;
+}
+
+.layanan-overlay .badge-harga {
+    display: inline-block;
+    background: rgba(255,255,255,0.2);
+    backdrop-filter: blur(8px);
+    padding: 0.15rem 1rem;
+    border-radius: 20px;
+    font-weight: 700;
+    font-size: 0.75rem;
+    border: 1px solid rgba(255,255,255,0.15);
+}
+
+/* ============================
+   CTA SECTION LAYANAN
+   ============================ */
+/* Menjaga background tetap merah gradasi khas KlinikSehat */
+.cta-section {
+    background: linear-gradient(135deg, #A93226, #C0392B);
+    color: white;
+    text-align: center;
+    padding: 3.5rem 2rem;
+    border-radius: 20px;
+    border: none;
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: left; /* Membuat tombol capsule otomatis berada di tengah */
+    justify-content: center;
+}
+
+.cta-section h2 {
+    color: white;
+    margin-bottom: 0.5rem;
+}
+
+/* Desain tombol capsule putih tulisan merah kecokelatan */
+.btn-janji-capsule {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px; /* Jarak antara emoji kalender dan teks */
+    
+    background-color: #ffffff; /* Latar belakang tombol tetap putih bersih */
+    color: #A93226; /* Warna teks merah kecokelatan */
+    
+    padding: 0.8rem 2.5rem; /* Mengatur ukuran tombol agar lonjong pas */
+    font-size: 1.05rem;
+    font-weight: 600;
+    text-decoration: none; /* Menghilangkan garis bawah tautan */
+    
+    border-radius: 50px; /* Membuat bentuk kapsul melengkung sempurna */
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15); /* Efek bayangan di atas background merah */
+}
+
+/* Efek interaktif hover ketika kursor menyentuh tombol capsule */
+.btn-janji-capsule:hover {
+    transform: translateY(-3px); /* Tombol sedikit mengangkat naik */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25); /* Bayangan menjadi lebih tegas */
+    background-color: #f8fafc; /* Warna putih tombol sedikit redup halus */
+}
+/* ============================
+   RESPONSIVE LAYANAN
+   ============================ */
+@media (max-width: 768px) {
+    .layanan-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .layanan-grid {
+        grid-template-columns: 1fr;
+    }
+}
