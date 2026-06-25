@@ -1,4 +1,119 @@
 /**
+ * ==================== INDEX.JS - Halaman Beranda ====================
+ * File ini berisi fungsi untuk SLIDER / CAROUSEL di halaman beranda.
+ * 
+ * Penulis: KlinikSehat Team
+ * ================================================================
+ */
+
+// ============================================================
+// FUNGSI CEK HALAMAN BERANDA
+// ============================================================
+function isBerandaPage() {
+    return document.querySelector('.hero-slider') !== null;
+}
+
+// ============================================================
+// FUNGSI SLIDER / CAROUSEL
+// ============================================================
+let slideIndex = 0;
+let slides = [];
+let dots = [];
+let slideInterval = null;
+
+// Inisialisasi slider
+function initSlider() {
+    if (!isBerandaPage()) return;
+    
+    slides = document.querySelectorAll('.slide');
+    dots = document.querySelectorAll('.dot');
+    
+    if (slides.length === 0) return;
+    
+    const prevBtn = document.getElementById('sliderPrev');
+    const nextBtn = document.getElementById('sliderNext');
+    
+    if (prevBtn) {
+        prevBtn.addEventListener('click', function() {
+            changeSlide(-1);
+        });
+    }
+    
+    if (nextBtn) {
+        nextBtn.addEventListener('click', function() {
+            changeSlide(1);
+        });
+    }
+    
+    dots.forEach(function(dot, index) {
+        dot.addEventListener('click', function() {
+            currentSlide(index);
+        });
+    });
+    
+    startAutoSlide();
+    console.log('🔄 Slider initialized with ' + slides.length + ' slides');
+}
+
+// Menampilkan slide berdasarkan index
+function showSlide(n) {
+    if (!slides.length) return;
+    
+    if (n >= slides.length) slideIndex = 0;
+    if (n < 0) slideIndex = slides.length - 1;
+    
+    slides.forEach(function(slide) {
+        slide.classList.remove('active');
+    });
+    dots.forEach(function(dot) {
+        dot.classList.remove('active');
+    });
+    
+    slides[slideIndex].classList.add('active');
+    if (dots[slideIndex]) {
+        dots[slideIndex].classList.add('active');
+    }
+}
+
+// Pindah slide
+function changeSlide(n) {
+    showSlide(slideIndex += n);
+    resetAutoSlide();
+}
+
+// Langsung menuju slide tertentu
+function currentSlide(n) {
+    showSlide(slideIndex = n);
+    resetAutoSlide();
+}
+
+// Auto slide setiap 4 detik
+function startAutoSlide() {
+    if (slideInterval) clearInterval(slideInterval);
+    slideInterval = setInterval(function() {
+        changeSlide(1);
+    }, 4000);
+}
+
+// Reset auto slide
+function resetAutoSlide() {
+    if (slideInterval) {
+        clearInterval(slideInterval);
+        slideInterval = setInterval(function() {
+            changeSlide(1);
+        }, 4000);
+    }
+}
+
+// ============================================================
+// EVENT LISTENER
+// ============================================================
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('🏥 KlinikSehat - Beranda siap');
+    initSlider();
+    console.log('✅ index.js berhasil dijalankan!');
+});
+/**
  * ==================== LAYANAN.JS - Halaman Layanan ====================
  * File ini berisi fungsi untuk halaman layanan.
  * Saat ini hanya placeholder untuk pengembangan selanjutnya.
