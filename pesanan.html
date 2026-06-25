@@ -8,11 +8,27 @@
 </head>
 <body>
     <!-- ===================== HEADER ===================== -->
+    <!-- Logo & nama klinik dengan animasi -->
     <header>
-        <h1>🏥 KlinikSehat</h1>
-        <p>Sistem Informasi Pelayanan Kesehatan</p>
+        <div class="header-container">
+            <div class="header-left">
+                <div class="header-icon">
+                    <svg viewBox="0 0 100 100" width="50" height="50">
+                        <rect x="35" y="10" width="30" height="80" rx="4" fill="white" />
+                        <rect x="10" y="35" width="80" height="30" rx="4" fill="white" />
+                    </svg>
+                </div>
+                <div class="header-text">
+                    <h1 class="animasi-tulisan">🏥 KlinikSehat</h1>
+                    <p class="animasi-tulisan-delay">Sistem Informasi Pelayanan Kesehatan</p>
+                </div>
+            </div>
+        </div>
     </header>
+
+
     <!-- ===================== NAVIGASI ===================== -->
+    <!-- Menu antar halaman, class "active" menandakan halaman ini -->
     <nav>
         <ul>
             <li><a href="index.html">Beranda</a></li>
@@ -23,6 +39,102 @@
     </nav>
     <!-- ===================== KONTEN UTAMA ===================== -->
     <main>
+
+        <section>
+            <!-- Judul Halaman -->
+            <h2>📝 Form Pemesanan Janji</h2>
+            <p style="color: #64748b; margin-bottom: 1.5rem;">Isi form berikut untuk membuat janji temu di KlinikSehat.</p>
+
+            <!-- ===== FORM PESANAN ===== -->
+            <!-- Field: Nama, Telepon, Layanan, Dokter, Tanggal, Waktu, Catatan -->
+            <form id="formPesanan">
+
+                <div>
+                    <label for="namaPasien">Nama Lengkap Pasien</label>
+                    <input type="text" id="namaPasien" placeholder="Contoh: Ahmad Fauzi" required />
+                </div>
+
+                <div>
+                    <label for="nomorPonsel">Nomor Ponsel</label>
+                    <input type="tel" id="nomorPonsel" placeholder="Contoh: 08123456789" required />
+                </div>
+
+                <!-- Pilih Layanan: memicu perubahan daftar dokter -->
+                <div>
+                    <label for="pilihLayanan">Pilih Layanan</label>
+                    <select id="pilihLayanan" required>
+                        <option value="">-- Pilih Layanan --</option>
+                        <option value="Konsultasi Umum">🩺 Konsultasi Umum</option>
+                        <option value="Konsultasi Jantung">❤️ Konsultasi Jantung</option>
+                        <option value="Perawatan Gigi">🦷 Perawatan Gigi</option>
+                        <option value="Konsultasi Anak">👶 Konsultasi Anak</option>
+                        <option value="Konsultasi Psikologi">🧠 Konsultasi Psikologi</option>
+                        <option value="Vaksinasi">💉 Vaksinasi</option>
+                        <option value="Laboratorium">🔬 Laboratorium</option>
+                        <option value="Rontgen / USG">🩻 Rontgen / USG</option>
+                    </select>
+                </div>
+
+                <!-- Pilih Dokter: terisi otomatis dari JavaScript -->
+                <div>
+                    <label for="pilihDokter">Pilih Dokter</label>
+                    <select id="pilihDokter" required>
+                        <option value="">-- Pilih Layanan Terlebih Dahulu --</option>
+                    </select>
+                </div>
+
+                <!-- Tanggal: minimal hari ini (diatur JS) -->
+                <div>
+                    <label for="tanggalJanji">Tanggal Janji</label>
+                    <input type="date" id="tanggalJanji" required />
+                </div>
+
+                <!-- Waktu: 13.00 - 20.00 -->
+                <div>
+                    <label for="waktuJanji">Waktu Janji</label>
+                    <select id="waktuJanji" required>
+                        <option value="">-- Pilih Waktu --</option>
+                        <option value="13:00">13.00</option>
+                        <option value="14:00">14.00</option>
+                        <option value="15:00">15.00</option>
+                        <option value="16:00">16.00</option>
+                        <option value="17:00">17.00</option>
+                        <option value="18:00">18.00</option>
+                        <option value="19:00">19.00</option>
+                        <option value="20:00">20.00</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label for="catatanTambahan">Catatan Tambahan</label>
+                    <textarea id="catatanTambahan" rows="4" placeholder="Keluhan atau catatan tambahan..."></textarea>
+                </div>
+
+                <!-- Tombol Submit: menyimpan data ke localStorage -->
+                <button type="submit" id="btnSubmit">📅 Buat Janji</button>
+
+            </form>
+
+            <!-- Pesan Sukses: muncul setelah submit berhasil -->
+            <div id="pesanSukses" style="display: none;">
+                <h3>✅ Janji Berhasil Dibuat!</h3>
+                <p>Data janji Anda telah disimpan. Silakan cek <a href="riwayat.html">Riwayat</a> untuk melihat daftar janji.</p>
+                <a href="riwayat.html"><button>Lihat Riwayat</button></a>
+            </div>
+
+        </section>
+
     </main>
+    
+    <!-- ===================== FOOTER ===================== -->
+    <!-- Hak cipta & kontak klinik -->
+    <footer>
+        <p>&copy; 2026 <span>KlinikSehat</span> - Sistem Informasi Pelayanan Kesehatan</p>
+        <p>Jl. Beringin No. 46 Psr V, Kota Medan | (061) 555-1284 | info@kliniksehat.id</p>
+    </footer>
+
+    <!-- ===================== JAVASCRIPT ===================== -->
+    <!-- File js/script.js berisi: data dokter, CRUD, localStorage, event handling -->
+    <script src="js/script.js"></script>
 </body>
 </html>
