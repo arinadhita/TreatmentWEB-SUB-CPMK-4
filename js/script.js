@@ -1,139 +1,12 @@
 /**
- * ==================== INDEX.JS - Halaman Beranda ====================
- * File ini berisi fungsi untuk SLIDER / CAROUSEL di halaman beranda.
+ * ==================== KLINIKSEHAT - SCRIPT.JS ====================
+ * File ini berisi semua fungsi JavaScript untuk:
+ * 1. SLIDER / CAROUSEL untuk halaman beranda
+ * 2. Pemesanan janji (form handling) + EDIT
+ * 3. CRUD data riwayat (Create, Read, Update, Delete)
  * 
  * Penulis: KlinikSehat Team
- * ================================================================
- */
-
-// ============================================================
-// FUNGSI CEK HALAMAN
-// ============================================================
-function isBerandaPage() {
-    return document.querySelector('.hero-slider') !== null;
-}
-
-function isPesananPage() {
-    return document.getElementById('formPesanan') !== null;
-}
-
-function isRiwayatPage() {
-    return document.getElementById('kontenRiwayat') !== null;
-}
-
-// ============================================================
-// FUNGSI SLIDER / CAROUSEL
-// ============================================================
-let slideIndex = 0;        // Index slide aktif
-let slides = [];           // Array elemen slide
-let dots = [];             // Array elemen dot indicator
-let slideInterval = null;  // Interval untuk auto slide
-
-// Inisialisasi slider
-function initSlider() {
-    if (!isBerandaPage()) return;
-    
-    slides = document.querySelectorAll('.slide');
-    dots = document.querySelectorAll('.dot');
-    
-    if (slides.length === 0) return;
-    
-    // Event listener untuk tombol prev dan next
-    const prevBtn = document.getElementById('sliderPrev');
-    const nextBtn = document.getElementById('sliderNext');
-    
-    if (prevBtn) {
-        prevBtn.addEventListener('click', function() {
-            changeSlide(-1);
-        });
-    }
-    
-    if (nextBtn) {
-        nextBtn.addEventListener('click', function() {
-            changeSlide(1);
-        });
-    }
-    
-    // Event listener untuk dot indicator
-    dots.forEach(function(dot, index) {
-        dot.addEventListener('click', function() {
-            currentSlide(index);
-        });
-    });
-    
-    startAutoSlide();
-    console.log('🔄 Slider initialized with ' + slides.length + ' slides');
-}
-
-// Menampilkan slide berdasarkan index
-function showSlide(n) {
-    if (!slides.length) return;
-    
-    if (n >= slides.length) slideIndex = 0;
-    if (n < 0) slideIndex = slides.length - 1;
-    
-    // Sembunyikan semua slide
-    slides.forEach(function(slide) {
-        slide.classList.remove('active');
-    });
-    dots.forEach(function(dot) {
-        dot.classList.remove('active');
-    });
-    
-    // Tampilkan slide aktif
-    slides[slideIndex].classList.add('active');
-    if (dots[slideIndex]) {
-        dots[slideIndex].classList.add('active');
-    }
-}
-
-// Pindah slide (n = 1 untuk next, -1 untuk prev)
-function changeSlide(n) {
-    showSlide(slideIndex += n);
-    resetAutoSlide();
-}
-
-// Langsung menuju slide tertentu
-function currentSlide(n) {
-    showSlide(slideIndex = n);
-    resetAutoSlide();
-}
-
-// Memulai auto slide (berganti setiap 4 detik)
-function startAutoSlide() {
-    if (slideInterval) clearInterval(slideInterval);
-    slideInterval = setInterval(function() {
-        changeSlide(1);
-    }, 4000);
-}
-
-// Mereset timer auto slide (dipanggil saat user interaksi)
-function resetAutoSlide() {
-    if (slideInterval) {
-        clearInterval(slideInterval);
-        slideInterval = setInterval(function() {
-            changeSlide(1);
-        }, 4000);
-    }
-}
-
-// ============================================================
-// EVENT LISTENER
-// ============================================================
-document.addEventListener('DOMContentLoaded', function() {
-    console.log('🏥 KlinikSehat - Beranda siap');
-    initSlider();
-    console.log('✅ index.js berhasil dijalankan!');
-});
-
-/**
- * ==================== PESANAN.JS - Halaman Pesan Janji ====================
- * File ini berisi fungsi untuk:
- * 1. Pemesanan janji (form handling)
- * 2. Data dokter berdasarkan layanan
- * 3. Data harga berdasarkan layanan
- * 4. Mode edit (dari riwayat)
- * 
+ * Tanggal: 2026
  * ================================================================
  */
 
@@ -190,11 +63,125 @@ const hargaList = {
     'Rontgen / USG': 300000
 };
 
+// ============================================================
+// FUNGSI FORMAT TANGGAL
+// ============================================================
+function formatTanggal(str) {
+    if (!str) return '';
+    const d = new Date(str + 'T00:00:00');
+    const bulan = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 
+                   'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
+    return d.getDate() + ' ' + bulan[d.getMonth()] + ' ' + d.getFullYear();
+}
 
 // ============================================================
-// FUNGSI UNTUK HALAMAN PESANAN
+// FUNGSI CEK HALAMAN
 // ============================================================
-// Set tanggal minimal = hari ini
+function isPesananPage() {
+    return document.getElementById('formPesanan') !== null;
+}
+
+function isRiwayatPage() {
+    return document.getElementById('kontenRiwayat') !== null;
+}
+
+function isBerandaPage() {
+    return document.querySelector('.hero-slider') !== null;
+}
+
+// ============================================================
+// ================ FUNGSI SLIDER / CAROUSEL ==================
+// ============================================================
+let slideIndex = 0;
+let slides = [];
+let dots = [];
+let slideInterval = null;
+
+function initSlider() {
+    if (!isBerandaPage()) return;
+    
+    slides = document.querySelectorAll('.slide');
+    dots = document.querySelectorAll('.dot');
+    
+    if (slides.length === 0) return;
+    
+    // Event listener untuk tombol prev dan next
+    const prevBtn = document.getElementById('sliderPrev');
+    const nextBtn = document.getElementById('sliderNext');
+    
+    if (prevBtn) {
+        prevBtn.addEventListener('click', function() {
+            changeSlide(-1);
+        });
+    }
+    
+    if (nextBtn) {
+        nextBtn.addEventListener('click', function() {
+            changeSlide(1);
+        });
+    }
+    
+    // Event listener untuk dot indicator
+    dots.forEach(function(dot, index) {
+        dot.addEventListener('click', function() {
+            currentSlide(index);
+        });
+    });
+    
+    // Mulai auto slide
+    startAutoSlide();
+    console.log('🔄 Slider initialized with ' + slides.length + ' slides');
+}
+
+function showSlide(n) {
+    if (!slides.length) return;
+    
+    if (n >= slides.length) slideIndex = 0;
+    if (n < 0) slideIndex = slides.length - 1;
+    
+    slides.forEach(function(slide) {
+        slide.classList.remove('active');
+    });
+    dots.forEach(function(dot) {
+        dot.classList.remove('active');
+    });
+    
+    slides[slideIndex].classList.add('active');
+    if (dots[slideIndex]) {
+        dots[slideIndex].classList.add('active');
+    }
+}
+
+function changeSlide(n) {
+    showSlide(slideIndex += n);
+    resetAutoSlide();
+}
+
+function currentSlide(n) {
+    showSlide(slideIndex = n);
+    resetAutoSlide();
+}
+
+function startAutoSlide() {
+    if (slideInterval) clearInterval(slideInterval);
+    slideInterval = setInterval(function() {
+        changeSlide(1);
+    }, 4000);
+}
+
+function resetAutoSlide() {
+    if (slideInterval) {
+        clearInterval(slideInterval);
+        slideInterval = setInterval(function() {
+            changeSlide(1);
+        }, 4000);
+    }
+}
+
+// ============================================================
+// ================ FUNGSI UNTUK HALAMAN PESANAN ================
+// ============================================================
+
 function setTanggalMinimal() {
     if (!isPesananPage()) return;
     
@@ -206,7 +193,6 @@ function setTanggalMinimal() {
     }
 }
 
-// Event: layanan berubah → dokter otomatis berubah
 function setupLayananDokter() {
     if (!isPesananPage()) return;
     
@@ -219,12 +205,18 @@ function setupLayananDokter() {
         const layanan = this.value;
         pilihDokter.innerHTML = '';
         
-        if (!layanan) {
-            pilihDokter.innerHTML = '<option value="">-- Pilih Layanan Terlebih Dahulu --</option>';
+        if (layanan === '') {
+            const option = document.createElement('option');
+            option.value = '';
+            option.textContent = '-- Pilih Layanan Terlebih Dahulu --';
+            pilihDokter.appendChild(option);
             return;
         }
         
-        pilihDokter.innerHTML = '<option value="">-- Pilih Dokter --</option>';
+        const defaultOption = document.createElement('option');
+        defaultOption.value = '';
+        defaultOption.textContent = '-- Pilih Dokter --';
+        pilihDokter.appendChild(defaultOption);
         
         const daftarDokter = dataDokter[layanan] || [];
         for (let i = 0; i < daftarDokter.length; i++) {
@@ -234,14 +226,60 @@ function setupLayananDokter() {
             pilihDokter.appendChild(option);
         }
     });
+}
+
+// ============================================================
+// CEK MODE EDIT - PERBAIKAN UTAMA!
+// ============================================================
+function cekModeEdit() {
+    if (!isPesananPage()) return;
     
-    // Trigger sekali jika ada value
-    if (pilihLayanan.value) {
-        pilihLayanan.dispatchEvent(new Event('change'));
+    const urlParams = new URLSearchParams(window.location.search);
+    const editId = urlParams.get('edit');
+    
+    if (editId) {
+        let riwayat = localStorage.getItem('kliniksehat_riwayat');
+        riwayat = riwayat ? JSON.parse(riwayat) : [];
+        
+        let dataEdit = null;
+        for (let i = 0; i < riwayat.length; i++) {
+            if (riwayat[i].id === editId) {
+                dataEdit = riwayat[i];
+                break;
+            }
+        }
+        
+        if (dataEdit) {
+            document.getElementById('namaPasien').value = dataEdit.nama;
+            document.getElementById('nomorPonsel').value = dataEdit.telepon;
+            document.getElementById('pilihLayanan').value = dataEdit.layanan;
+            document.getElementById('tanggalJanji').value = dataEdit.tanggal;
+            document.getElementById('waktuJanji').value = dataEdit.waktu;
+            document.getElementById('catatanTambahan').value = dataEdit.catatan || '';
+            
+            // Trigger change untuk load dokter
+            const event = new Event('change');
+            document.getElementById('pilihLayanan').dispatchEvent(event);
+            
+            // Set dokter setelah data dokter terload
+            setTimeout(function() {
+                document.getElementById('pilihDokter').value = dataEdit.dokter;
+            }, 100);
+            
+            const btnSubmit = document.getElementById('btnSubmit');
+            if (btnSubmit) {
+                btnSubmit.textContent = '✏️ Update Janji';
+            }
+            
+            document.getElementById('formPesanan').dataset.editId = editId;
+            console.log('✏️ Mode Edit: ' + editId);
+        }
     }
 }
 
-// Submit form
+// ============================================================
+// SETUP FORM PESANAN - PERBAIKAN UTAMA!
+// ============================================================
 function setupFormPesanan() {
     if (!isPesananPage()) return;
     
@@ -276,6 +314,8 @@ function setupFormPesanan() {
         riwayat = riwayat ? JSON.parse(riwayat) : [];
 
         if (editId) {
+            // ===== MODE EDIT: UPDATE DATA =====
+            let ditemukan = false;
             for (let i = 0; i < riwayat.length; i++) {
                 if (riwayat[i].id === editId) {
                     riwayat[i].nama = nama;
@@ -286,14 +326,21 @@ function setupFormPesanan() {
                     riwayat[i].waktu = waktu;
                     riwayat[i].catatan = catatan;
                     riwayat[i].harga = harga;
+                    ditemukan = true;
                     break;
                 }
             }
-            localStorage.setItem('kliniksehat_riwayat', JSON.stringify(riwayat));
-            alert('✅ Data janji berhasil diupdate!');
-            window.location.href = 'riwayat.html';
+            
+            if (ditemukan) {
+                localStorage.setItem('kliniksehat_riwayat', JSON.stringify(riwayat));
+                alert('✅ Data janji berhasil diupdate!');
+                window.location.href = 'riwayat.html';
+            } else {
+                alert('⚠️ Data tidak ditemukan!');
+            }
             
         } else {
+            // ===== MODE TAMBAH: BUAT DATA BARU =====
             const idBaru = 'KLS' + Date.now().toString().slice(-6);
 
             const dataBaru = {
@@ -320,69 +367,9 @@ function setupFormPesanan() {
 }
 
 // ============================================================
-// EVENT LISTENER
-// ============================================================
-document.addEventListener('DOMContentLoaded', function() {
-    console.log('🏥 KlinikSehat - Pesanan siap');
-    
-    if (isPesananPage()) {
-        setTanggalMinimal();
-        setupLayananDokter();
-        setupFormPesanan();
-        cekModeEdit();
-    }
-    
-    console.log('✅ pesanan.js berhasil dijalankan!');
-});
-
-/**
- * ==================== LAYANAN.JS - Halaman Layanan ====================
- * File ini berisi fungsi untuk halaman layanan.
- * Saat ini hanya placeholder untuk pengembangan selanjutnya.
- * ================================================================
- */
-
-document.addEventListener('DOMContentLoaded', function() {
-    console.log('🏥 KlinikSehat - Layanan siap');
-    console.log('✅ layanan.js berhasil dijalankan!');
-});
-
-/**
- * ==================== RIWAYAT.JS - Halaman Riwayat ====================
- * File ini berisi fungsi untuk:
- * 1. Menampilkan data riwayat
- * 2. Hapus per data
- * 3. Hapus semua data
- * 4. Edit data (redirect ke pesanan.html)
- * 
- * Penulis: KlinikSehat Team
- * Tanggal: 2026
- * ================================================================
- */
-
-// ============================================================
-// FUNGSI FORMAT TANGGAL
-// ============================================================
-function formatTanggal(str) {
-    if (!str) return '';
-    const d = new Date(str + 'T00:00:00');
-    const bulan = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 
-                   'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
-    return d.getDate() + ' ' + bulan[d.getMonth()] + ' ' + d.getFullYear();
-}
-
-// ============================================================
-// FUNGSI CEK HALAMAN RIWAYAT
-// ============================================================
-function isRiwayatPage() {
-    return document.getElementById('kontenRiwayat') !== null;
-}
-
-// ============================================================
-// FUNGSI UNTUK HALAMAN RIWAYAT
+// ================ FUNGSI UNTUK HALAMAN RIWAYAT ================
 // ============================================================
 
-// Menampilkan data riwayat
 function tampilkanRiwayat() {
     if (!isRiwayatPage()) return;
     
@@ -454,7 +441,6 @@ function tampilkanRiwayat() {
     kontainer.innerHTML = html;
 }
 
-// Hapus satu data
 function hapusPesanan(id) {
     if (!confirm('Yakin ingin menghapus janji ini?')) return;
 
@@ -477,7 +463,6 @@ function hapusPesanan(id) {
     }
 }
 
-// Hapus semua data
 function hapusSemua() {
     if (confirm('⚠️ Yakin ingin menghapus SEMUA riwayat?')) {
         localStorage.removeItem('kliniksehat_riwayat');
@@ -486,7 +471,6 @@ function hapusSemua() {
     }
 }
 
-// Edit data - redirect ke pesanan.html
 function editPesanan(id) {
     let riwayat = localStorage.getItem('kliniksehat_riwayat');
     riwayat = riwayat ? JSON.parse(riwayat) : [];
@@ -507,12 +491,26 @@ function editPesanan(id) {
 }
 
 // ============================================================
-// EVENT LISTENER
+// ================== EVENT LISTENER UTAMA =====================
 // ============================================================
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('🏥 KlinikSehat - Riwayat siap');
-    
+    console.log('🏥 KlinikSehat - DOM siap');
+
+    // ===== SLIDER / CAROUSEL (Halaman Beranda) =====
+    initSlider();
+
+    // ===== HALAMAN PESANAN =====
+    if (isPesananPage()) {
+        console.log('📝 Halaman Pesanan');
+        setTanggalMinimal();
+        setupLayananDokter();
+        setupFormPesanan();
+        cekModeEdit();
+    }
+
+    // ===== HALAMAN RIWAYAT =====
     if (isRiwayatPage()) {
+        console.log('📋 Halaman Riwayat');
         tampilkanRiwayat();
 
         const btnHapusSemua = document.getElementById('btnHapusSemua');
@@ -542,6 +540,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
-    
-    console.log('✅ riwayat.js berhasil dijalankan!');
+
+    console.log('✅ KlinikSehat - Script.js berhasil dijalankan!');
 });
