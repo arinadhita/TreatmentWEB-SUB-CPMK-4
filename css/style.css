@@ -1,24 +1,4 @@
 /* ============================
-   ROOT VARIABLES (BARU)
-   ============================ */
-:root {
-    --primary: #A93226;
-    --primary-dark: #8B231B;
-    --primary-light: #C0392B;
-    --primary-gradient: linear-gradient(135deg, #A93226, #C0392B, #E74C3C);
-    --bg-soft: #F8F6F5;
-    --border-color: #e9edf2;
-    --text-primary: #2C3E50;
-    --text-secondary: #64748b;
-    --white: #ffffff;
-    --shadow-sm: 0 4px 20px rgba(0,0,0,0.02);
-    --shadow-md: 0 8px 32px rgba(0,0,0,0.05);
-    --radius-lg: 20px;
-    --radius-md: 16px;
-    --radius-sm: 14px;
-}
-
-/* ============================
    RESET & BASE STYLES
    ============================ */
 * {
@@ -28,12 +8,11 @@
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: var(--bg-soft);
-    color: var(--text-primary);
-    line-height: 1.6;
+    font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+    background: #F8F6F5;
+    color: #2C3E50;
+    line-height: 1.7;
     min-height: 100vh;
-    position: relative;
 }
 
 a {
@@ -41,16 +20,13 @@ a {
 }
 
 /* ============================
-   HEADER - SOFT RED
+   HEADER - MERAH ELEGAN
    ============================ */
 header {
-    background: var(--primary-gradient);
-    color: var(--white);
-    padding: 2rem 2rem 1.8rem;
-    text-align: left;
-    position: relative;
-    overflow: hidden;
-    border-bottom: 4px solid rgba(255, 255, 255, 0.3);
+    background: linear-gradient(135deg, #A93226, #C0392B, #E74C3C);
+    color: white;
+    padding: 1.8rem 2rem;
+    border-bottom: 4px solid rgba(255,255,255,0.12);
 }
 
 .header-container {
@@ -69,7 +45,6 @@ header {
     padding: 0.5rem;
     border-radius: 14px;
     backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px); /* Tambahan untuk Safari */
 }
 
 .header-text h1 {
@@ -84,32 +59,28 @@ header {
     font-size: 0.95rem;
 }
 
-/* ============================
-   ANIMASI HEADER
-   ============================ */
+/* Animasi Header */
 .animasi-tulisan {
     animation: slideDown 0.6s ease forwards;
     opacity: 0;
 }
-
 .animasi-tulisan-delay {
     animation: slideDown 0.6s ease forwards;
     animation-delay: 0.2s;
     opacity: 0;
 }
-
 @keyframes slideDown {
     from { opacity: 0; transform: translateY(-16px); }
     to { opacity: 1; transform: translateY(0); }
 }
 
 /* ============================
-   NAVIGASI - DIPERBAIKI (Background Putih)
+   NAVIGASI - CLEAN
    ============================ */
 nav {
-    background: var(--white); /* ✅ DIPERBAIKI: dari merah jadi putih */
+    background: white;
     box-shadow: 0 2px 12px rgba(0,0,0,0.04);
-    border-bottom: 1px solid var(--border-color);
+    border-bottom: 1px solid #e9edf2;
     position: sticky;
     top: 0;
     z-index: 100;
@@ -128,7 +99,7 @@ nav ul {
 nav ul li a {
     display: block;
     padding: 0.9rem 1.8rem;
-    color: #475569; 
+    color: #475569;
     font-weight: 500;
     font-size: 0.9rem;
     transition: all 0.3s ease;
@@ -137,8 +108,8 @@ nav ul li a {
 
 nav ul li a:hover,
 nav ul li a.active {
-    color: var(--primary-light);
-    border-bottom-color: var(--primary-light);
+    color: #C0392B;
+    border-bottom-color: #C0392B;
     background: rgba(192, 57, 43, 0.04);
 }
 
@@ -152,21 +123,21 @@ main {
 }
 
 section {
-    background: var(--white);
+    background: white;
     padding: 2.2rem 2.5rem;
-    border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-sm);
+    border-radius: 20px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.02);
     margin-bottom: 2rem;
     border: 1px solid #eef2f6;
     transition: box-shadow 0.3s ease;
 }
 
 section:hover {
-    box-shadow: var(--shadow-md);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.05);
 }
 
 section h2 {
-    color: var(--primary);
+    color: #A93226;
     margin-bottom: 1rem;
     font-size: 1.6rem;
     font-weight: 700;
@@ -178,56 +149,33 @@ section h2::after {
     display: block;
     width: 50px;
     height: 4px;
-    background: linear-gradient(135deg, var(--primary), #E74C3C);
+    background: linear-gradient(135deg, #A93226, #E74C3C);
     border-radius: 4px;
     margin-top: 0.3rem;
 }
 
 /* ============================
-   FADE IN ANIMATION - Class terpisah (BARU)
+   FADE IN ANIMATION
    ============================ */
 .fade-in {
     opacity: 0;
     animation: fadeInUp 0.7s ease forwards;
 }
-
 @keyframes fadeInUp {
     from { opacity: 0; transform: translateY(24px); }
     to { opacity: 1; transform: translateY(0); }
 }
 
 /* ============================
-   BUTTON PRIMARY - SHARED
-   ============================ */
-.btn-primary {
-    display: inline-block;
-    background: var(--white);
-    color: var(--primary);
-    padding: 0.8rem 2.5rem;
-    border-radius: 50px;
-    font-weight: 700;
-    font-size: 1rem;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
-}
-
-.btn-primary:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 28px rgba(0,0,0,0.15);
-}
-
-/* ============================
-   HERO SECTION - SOFT RED
+   HERO - MERAH ELEGAN
    ============================ */
 .hero {
-    background: var(--primary-gradient);
-    color: var(--white);
+    background: linear-gradient(135deg, #A93226, #C0392B, #E74C3C);
+    color: white;
     text-align: center;
-    padding: 4rem 3rem;
-    border-radius: var(--radius-md);
+    padding: 3.5rem 3rem;
+    border-radius: 20px;
     border: none;
-    position: relative;
-    overflow: hidden;
 }
 
 .hero-content {
@@ -242,7 +190,6 @@ section h2::after {
     flex-shrink: 0;
     animation: float 3s ease-in-out infinite;
 }
-
 @keyframes float {
     0%, 100% { transform: translateY(0); }
     50% { transform: translateY(-12px); }
@@ -254,11 +201,10 @@ section h2::after {
 }
 
 .hero h2 {
-    color: var(--white);
+    color: white;
     font-size: 2.2rem;
     font-weight: 700;
 }
-
 .hero h2::after {
     background: rgba(255,255,255,0.3);
     margin: 0.5rem auto 0;
@@ -273,91 +219,20 @@ section h2::after {
     line-height: 1.8;
 }
 
-/* ============================
-   LAYANAN UNGGULAN 2x2 GRID (BARU)
-   ============================ */
-.layanan-unggulan-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.2rem;
-    margin-top: 1.2rem;
-}
-
-.layanan-unggulan-grid .layanan-card {
-    background: var(--bg-soft);
-    border-radius: var(--radius-md);
-    padding: 1.8rem 1.5rem;
-    text-align: center;
-    border: 1px solid var(--border-color);
+.btn-primary {
+    display: inline-block;
+    background: white;
+    color: #A93226;
+    padding: 0.8rem 2.5rem;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 1rem;
     transition: all 0.3s ease;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
 }
-
-.layanan-unggulan-grid .layanan-card:hover {
-    transform: translateY(-6px);
-    border-color: var(--primary-light);
-    box-shadow: 0 8px 28px rgba(192, 57, 43, 0.06);
-}
-
-.layanan-unggulan-grid .layanan-icon {
-    font-size: 2.6rem;
-    display: block;
-    margin-bottom: 0.5rem;
-}
-
-.layanan-unggulan-grid .layanan-card h3 {
-    color: var(--primary);
-    font-size: 1.1rem;
-    margin: 0.3rem 0;
-}
-
-.layanan-unggulan-grid .layanan-card p {
-    color: var(--text-secondary);
-    font-size: 0.9rem;
-}
-
-/* ============================
-   KONTAK GRID (BARU)
-   ============================ */
-.kontak-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
-    margin-top: 1rem;
-}
-
-.kontak-item {
-    background: var(--bg-soft);
-    padding: 1rem 1.5rem;
-    border-radius: var(--radius-sm);
-    border: 1px solid var(--border-color);
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    transition: all 0.3s ease;
-}
-
-.kontak-item:hover {
-    border-color: var(--primary-light);
-}
-
-.kontak-icon {
-    font-size: 1.6rem;
-    min-width: 40px;
-}
-
-.kontak-label {
-    font-weight: 600;
-    color: var(--primary);
-    font-size: 0.75rem;
-    display: block;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
-
-.kontak-value {
-    color: var(--text-primary);
-    font-weight: 500;
-    display: block;
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 28px rgba(0,0,0,0.15);
 }
 
 /* ============================
@@ -371,17 +246,16 @@ section h2::after {
 }
 
 .info-item {
-    background: var(--bg-soft);
+    background: #F8F6F5;
     padding: 1.5rem 1rem;
-    border-radius: var(--radius-md);
+    border-radius: 16px;
     text-align: center;
-    border: 1px solid var(--border-color);
+    border: 1px solid #e9edf2;
     transition: all 0.3s ease;
 }
-
 .info-item:hover {
     transform: translateY(-4px);
-    border-color: var(--primary-light);
+    border-color: #C0392B;
     box-shadow: 0 8px 24px rgba(192, 57, 43, 0.06);
 }
 
@@ -390,95 +264,452 @@ section h2::after {
     display: block;
     margin-bottom: 0.3rem;
 }
-
 .info-item span {
     font-weight: 600;
-    color: var(--primary);
+    color: #A93226;
 }
 
 /* ============================
-   FASILITAS GRID
+   LAYANAN UNGGULAN - 2x2
    ============================ */
-.fasilitas-grid {
+.layanan-unggulan-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.2rem;
+    margin-top: 1.2rem;
+}
+
+.layanan-unggulan-grid .layanan-card {
+    background: #F8F6F5;
+    border-radius: 16px;
+    padding: 1.8rem 1.5rem;
+    text-align: center;
+    border: 1px solid #e9edf2;
+    transition: all 0.3s ease;
+}
+.layanan-unggulan-grid .layanan-card:hover {
+    transform: translateY(-6px);
+    border-color: #C0392B;
+    box-shadow: 0 8px 28px rgba(192, 57, 43, 0.06);
+}
+
+.layanan-unggulan-grid .layanan-icon {
+    font-size: 2.6rem;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+.layanan-unggulan-grid .layanan-card h3 {
+    color: #A93226;
+    font-size: 1.1rem;
+    margin: 0.3rem 0;
+}
+.layanan-unggulan-grid .layanan-card p {
+    color: #64748b;
+    font-size: 0.9rem;
+}
+
+/* ============================
+   KONTAK
+   ============================ */
+.kontak-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
     margin-top: 1rem;
 }
 
-.fasilitas-item {
-    background: var(--bg-soft);
-    padding: 1.5rem 1rem;
-    border-radius: var(--radius-md);
-    text-align: center;
-    border: 1px solid var(--border-color);
-    transition: all 0.3s ease;
-}
-
-.fasilitas-item:hover {
-    transform: translateY(-4px);
-    border-color: var(--primary-light);
-    box-shadow: 0 8px 24px rgba(192, 57, 43, 0.06);
-}
-
-.fasilitas-icon {
-    font-size: 2.2rem;
-    display: block;
-    margin-bottom: 0.5rem;
-}
-
-.fasilitas-item h4 {
-    color: var(--primary);
-    font-size: 0.95rem;
-    margin: 0.3rem 0;
-}
-
-.fasilitas-item p {
-    color: var(--text-secondary);
-    font-size: 0.8rem;
-    margin: 0;
-}
-
-/* ============================
-   CTA BANNER (BARU)
-   ============================ */
-.cta-banner {
-    background: linear-gradient(135deg, var(--primary), var(--primary-light));
-    border-radius: var(--radius-lg);
-    padding: 2.5rem 3rem;
-    border: none;
-}
-
-.cta-banner-content {
+.kontak-item {
+    background: #F8F6F5;
+    padding: 1rem 1.5rem;
+    border-radius: 14px;
+    border: 1px solid #e9edf2;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 1.5rem;
+    gap: 1rem;
+    transition: all 0.3s ease;
 }
-
-.cta-banner-content h2 {
-    color: var(--white);
+.kontak-item:hover {
+    border-color: #C0392B;
+}
+.kontak-icon {
     font-size: 1.6rem;
-    margin: 0;
+    min-width: 40px;
 }
-
-.cta-banner-content h2::after {
-    display: none;
+.kontak-label {
+    font-weight: 600;
+    color: #A93226;
+    font-size: 0.75rem;
+    display: block;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
-
-.cta-banner-content p {
-    color: rgba(255,255,255,0.9);
-    margin: 0.3rem 0 0;
-    font-size: 1rem;
+.kontak-value {
+    color: #2C3E50;
+    font-weight: 500;
+    display: block;
 }
 
 /* ============================
-   SLIDER / CAROUSEL - DIPERLENGKAP
+   LAYANAN GRID (dengan gambar)
+   ============================ */
+.layanan-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.layanan-card {
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid #e9edf2;
+    transition: all 0.3s ease;
+    background: white;
+}
+.layanan-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 36px rgba(0,0,0,0.06);
+}
+
+.layanan-gambar-full {
+    width: 100%;
+    height: 180px;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+.layanan-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1.2rem 1rem 0.8rem;
+    background: linear-gradient(transparent, rgba(169, 50, 38, 0.85));
+    color: white;
+    text-align: center;
+}
+.layanan-overlay h3 {
+    color: white;
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin: 0 0 0.1rem;
+}
+.layanan-overlay p {
+    font-size: 0.8rem;
+    opacity: 0.9;
+    margin: 0 0 0.2rem;
+}
+.layanan-overlay .badge-harga {
+    display: inline-block;
+    background: rgba(255,255,255,0.2);
+    backdrop-filter: blur(8px);
+    padding: 0.15rem 1rem;
+    border-radius: 20px;
+    font-weight: 700;
+    font-size: 0.75rem;
+    border: 1px solid rgba(255,255,255,0.15);
+}
+
+/* ============================
+   FORM
+   ============================ */
+#formPesanan {
+    max-width: 660px;
+    margin: 0 auto;
+}
+
+#formPesanan div {
+    margin-bottom: 1.2rem;
+}
+
+#formPesanan label {
+    display: block;
+    font-weight: 600;
+    color: #A93226;
+    margin-bottom: 0.3rem;
+    font-size: 0.9rem;
+}
+
+#formPesanan input,
+#formPesanan select,
+#formPesanan textarea {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: 2px solid #e9edf2;
+    border-radius: 14px;
+    font-size: 1rem;
+    font-family: inherit;
+    transition: all 0.3s ease;
+    background: #fafcfd;
+}
+#formPesanan input:focus,
+#formPesanan select:focus,
+#formPesanan textarea:focus {
+    outline: none;
+    border-color: #C0392B;
+    box-shadow: 0 0 0 4px rgba(192, 57, 43, 0.08);
+}
+
+#btnSubmit {
+    background: linear-gradient(135deg, #A93226, #C0392B);
+    color: white;
+    border: none;
+    padding: 1rem 2.5rem;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+    box-shadow: 0 4px 20px rgba(192, 57, 43, 0.25);
+}
+#btnSubmit:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 32px rgba(192, 57, 43, 0.35);
+}
+
+/* ============================
+   PESAN SUKSES
+   ============================ */
+#pesanSukses {
+    background: #fdf2f0;
+    border: 2px solid #C0392B;
+    border-radius: 16px;
+    padding: 2.5rem;
+    text-align: center;
+}
+#pesanSukses h3 {
+    color: #A93226;
+}
+#pesanSukses a {
+    color: #A93226;
+    font-weight: 600;
+}
+#pesanSukses button {
+    background: #A93226;
+    color: white;
+    border: none;
+    padding: 0.7rem 2rem;
+    border-radius: 50px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+#pesanSukses button:hover {
+    transform: scale(1.03);
+}
+
+/* ============================
+   RIWAYAT
+   ============================ */
+.riwayat-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+#btnHapusSemua {
+    background: #A93226;
+    color: white;
+    border: none;
+    padding: 0.6rem 1.8rem;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+#btnHapusSemua:hover {
+    background: #8B231B;
+    transform: scale(1.02);
+}
+
+/* Tabel */
+.tabel-wrapper {
+    overflow-x: auto;
+    margin-top: 1rem;
+    border-radius: 16px;
+    border: 1px solid #e9edf2;
+}
+.tabel-riwayat {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+    min-width: 700px;
+}
+.tabel-riwayat thead {
+    background: #A93226;
+    color: white;
+}
+.tabel-riwayat thead th {
+    padding: 0.8rem 1rem;
+    text-align: left;
+    font-weight: 600;
+}
+.tabel-riwayat tbody tr {
+    border-bottom: 1px solid #e9edf2;
+}
+.tabel-riwayat tbody tr:hover {
+    background: #F8F6F5;
+}
+.tabel-riwayat tbody td {
+    padding: 0.7rem 1rem;
+}
+.tabel-riwayat .no-urut {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #A93226;
+    color: white;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    font-size: 0.7rem;
+    font-weight: 700;
+}
+.tabel-riwayat .nama-pasien {
+    font-weight: 600;
+    color: #A93226;
+}
+.tabel-riwayat .badge-status {
+    background: #fdf2f0;
+    color: #A93226;
+    padding: 0.2rem 1rem;
+    border-radius: 50px;
+    font-size: 0.7rem;
+    font-weight: 700;
+}
+.tabel-riwayat .harga-text {
+    font-weight: 700;
+    color: #A93226;
+}
+.aksi-button {
+    display: flex;
+    gap: 0.4rem;
+    flex-wrap: wrap;
+}
+.aksi-button .btn-edit,
+.aksi-button .btn-hapus {
+    padding: 0.2rem 0.9rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.7rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+.aksi-button .btn-edit {
+    background: #f59e0b;
+    color: white;
+}
+.aksi-button .btn-edit:hover {
+    background: #d97706;
+}
+.aksi-button .btn-hapus {
+    background: #A93226;
+    color: white;
+}
+.aksi-button .btn-hapus:hover {
+    background: #8B231B;
+}
+
+/* ============================
+   RIWAYAT KOSONG
+   ============================ */
+.riwayat-kosong {
+    text-align: center;
+    padding: 3rem 2rem;
+    background: #F8F6F5;
+    border-radius: 16px;
+}
+.riwayat-kosong .icon-kosong {
+    font-size: 4rem;
+    margin-bottom: 0.8rem;
+}
+.riwayat-kosong p {
+    font-size: 1.05rem;
+    color: #64748b;
+    margin-bottom: 1.2rem;
+}
+.btn-ke-layanan {
+    display: inline-block;
+    background: #A93226;
+    color: white;
+    padding: 0.6rem 2rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(169, 50, 38, 0.2);
+}
+.btn-ke-layanan:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 25px rgba(169, 50, 38, 0.3);
+}
+
+/* ============================
+   CTA SECTION - MERAH ELEGAN
+   ============================ */
+.cta-section {
+    background: linear-gradient(135deg, #A93226, #C0392B);
+    color: white;
+    text-align: center;
+    padding: 3rem 2rem;
+    border-radius: 20px;
+    border: none;
+}
+.cta-section h2 {
+    color: white;
+}
+.cta-section h2::after {
+    background: rgba(255,255,255,0.3);
+    margin: 0.3rem auto 0;
+}
+.cta-section p {
+    opacity: 0.9;
+    margin-bottom: 1.2rem;
+}
+.cta-section .btn-primary {
+    background: white;
+    color: #A93226;
+}
+
+/* ============================
+   FOOTER
+   ============================ */
+footer {
+    background: #2C3E50;
+    color: rgba(255,255,255,0.7);
+    text-align: center;
+    padding: 2rem;
+    margin-top: 3rem;
+    border-top: 4px solid #A93226;
+}
+footer p {
+    margin: 0.2rem 0;
+    font-size: 0.85rem;
+}
+footer p:first-child {
+    font-weight: 600;
+    color: rgba(255,255,255,0.9);
+}
+footer p:first-child span {
+    color: #E74C3C;
+}
+
+/* ================================================================
+   ================ TAMBAHAN KONTEN (INDEX.HTML) ==================
+   ================================================================ */
+
+/* ============================
+   SLIDER / CAROUSEL
    ============================ */
 .hero-slider {
-    background: linear-gradient(135deg, var(--primary), var(--primary-light));
-    border-radius: var(--radius-lg);
+    background: linear-gradient(135deg, #A93226, #C0392B);
+    border-radius: 20px;
     padding: 0;
     overflow: hidden;
     border: none;
@@ -518,7 +749,7 @@ section h2::after {
 .slide-text {
     flex: 1;
     min-width: 250px;
-    color: var(--white);
+    color: white;
 }
 
 .slide-badge {
@@ -530,12 +761,11 @@ section h2::after {
     font-weight: 600;
     margin-bottom: 0.8rem;
     backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
     border: 1px solid rgba(255,255,255,0.1);
 }
 
 .slide-text h2 {
-    color: var(--white);
+    color: white;
     font-size: 2rem;
     margin-bottom: 0.8rem;
 }
@@ -560,14 +790,13 @@ section h2::after {
     top: 50%;
     transform: translateY(-50%);
     background: rgba(255,255,255,0.15);
-    color: var(--white);
+    color: white;
     border: none;
     padding: 0.8rem 1.2rem;
     font-size: 1.2rem;
     cursor: pointer;
     border-radius: 50%;
     backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
     transition: all 0.3s ease;
     border: 1px solid rgba(255,255,255,0.1);
     z-index: 10;
@@ -605,483 +834,143 @@ section h2::after {
 }
 
 .dot.active {
-    background: var(--white);
+    background: white;
     width: 25px;
     border-radius: 10px;
 }
 
 /* ============================
-   LAYANAN.CSS - Halaman Layanan
+   FASILITAS GRID
    ============================ */
-.layanan-grid {
+.fasilitas-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 1.5rem;
-    margin-top: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
 }
 
-.layanan-card {
-    border-radius: var(--radius-md);
-    overflow: hidden;
-    border: 1px solid var(--border-color);
+.fasilitas-item {
+    background: #F8F6F5;
+    padding: 1.5rem 1rem;
+    border-radius: 16px;
+    text-align: center;
+    border: 1px solid #e9edf2;
     transition: all 0.3s ease;
-    background: var(--white);
 }
 
-.layanan-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 12px 36px rgba(0,0,0,0.06);
+.fasilitas-item:hover {
+    transform: translateY(-4px);
+    border-color: #C0392B;
+    box-shadow: 0 8px 24px rgba(192, 57, 43, 0.06);
 }
 
-.layanan-gambar-full {
-    width: 100%;
-    height: 180px;
-    background-size: cover;
-    background-position: center;
-    position: relative;
-}
-
-.layanan-overlay {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    padding: 1.2rem 1rem 0.8rem;
-    background: linear-gradient(transparent, rgba(169, 50, 38, 0.85));
-    color: var(--white);
-    text-align: center;
-}
-
-.layanan-overlay h3 {
-    color: var(--white);
-    font-size: 1.05rem;
-    font-weight: 700;
-    margin: 0 0 0.1rem;
-}
-
-.layanan-overlay p {
-    font-size: 0.8rem;
-    opacity: 0.9;
-    margin: 0 0 0.2rem;
-}
-
-.layanan-overlay .badge-harga {
-    display: inline-block;
-    background: rgba(255,255,255,0.2);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    padding: 0.15rem 1rem;
-    border-radius: 20px;
-    font-weight: 700;
-    font-size: 0.75rem;
-    border: 1px solid rgba(255,255,255,0.15);
-}
-
-/* ============================
-   CTA SECTION LAYANAN
-   ============================ */
-.cta-section {
-    background: linear-gradient(135deg, var(--primary), var(--primary-light));
-    color: var(--white);
-    text-align: center;
-    padding: 3.5rem 2rem;
-    border-radius: var(--radius-lg);
-    border: none;
-    margin-top: 2rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-.cta-section h2 {
-    color: var(--white);
+.fasilitas-icon {
+    font-size: 2.2rem;
+    display: block;
     margin-bottom: 0.5rem;
 }
 
-.cta-section h2::after {
-    background: rgba(255,255,255,0.3);
-    margin: 0.3rem auto 0;
+.fasilitas-item h4 {
+    color: #A93226;
+    font-size: 0.95rem;
+    margin: 0.3rem 0;
 }
 
-.cta-section p {
-    opacity: 0.9;
-    margin-bottom: 1.2rem;
-}
-
-.btn-janji-capsule {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    background-color: #ffffff;
-    color: var(--primary);
-    padding: 0.8rem 2.5rem;
-    font-size: 1.05rem;
-    font-weight: 600;
-    text-decoration: none;
-    border-radius: 50px;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
-}
-
-.btn-janji-capsule:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
-    background-color: #f8fafc;
+.fasilitas-item p {
+    color: #64748b;
+    font-size: 0.8rem;
+    margin: 0;
 }
 
 /* ============================
-   RIWAYAT.CSS - Halaman Riwayat
+   CTA BANNER
    ============================ */
-.riwayat-header {
+.cta-banner {
+    background: linear-gradient(135deg, #A93226, #C0392B);
+    border-radius: 20px;
+    padding: 2.5rem 3rem;
+    border: none;
+}
+
+.cta-banner-content {
     display: flex;
+    align-items: center;
     justify-content: space-between;
-    align-items: center;
     flex-wrap: wrap;
-    gap: 1rem;
+    gap: 1.5rem;
 }
 
-#btnHapusSemua {
-    background: var(--primary);
-    color: var(--white);
-    border: none;
-    padding: 0.6rem 1.8rem;
-    border-radius: 50px;
-    font-weight: 600;
-    font-size: 0.9rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
+.cta-banner-content h2 {
+    color: white;
+    font-size: 1.6rem;
+    margin: 0;
 }
 
-#btnHapusSemua:hover {
-    background: var(--primary-dark);
-    transform: scale(1.02);
+.cta-banner-content h2::after {
+    display: none;
 }
 
-.tabel-wrapper {
-    overflow-x: auto;
-    margin-top: 1rem;
-    border-radius: var(--radius-md);
-    border: 1px solid var(--border-color);
-}
-
-.tabel-riwayat {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 0.9rem;
-    min-width: 700px;
-}
-
-.tabel-riwayat thead {
-    background: var(--primary);
-    color: var(--white);
-}
-
-.tabel-riwayat thead th {
-    padding: 0.8rem 1rem;
-    text-align: left;
-    font-weight: 600;
-}
-
-.tabel-riwayat tbody tr {
-    border-bottom: 1px solid var(--border-color);
-}
-
-.tabel-riwayat tbody tr:hover {
-    background: var(--bg-soft);
-}
-
-.tabel-riwayat tbody td {
-    padding: 0.7rem 1rem;
-}
-
-.tabel-riwayat .no-urut {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    background: var(--primary);
-    color: var(--white);
-    width: 26px;
-    height: 26px;
-    border-radius: 50%;
-    font-size: 0.7rem;
-    font-weight: 700;
-}
-
-.tabel-riwayat .nama-pasien {
-    font-weight: 600;
-    color: var(--primary);
-}
-
-.tabel-riwayat .badge-status {
-    background: #fdf2f0;
-    color: var(--primary);
-    padding: 0.2rem 1rem;
-    border-radius: 50px;
-    font-size: 0.7rem;
-    font-weight: 700;
-}
-
-.tabel-riwayat .harga-text {
-    font-weight: 700;
-    color: var(--primary);
-}
-
-.aksi-button {
-    display: flex;
-    gap: 0.4rem;
-    flex-wrap: wrap;
-}
-
-.aksi-button .btn-edit,
-.aksi-button .btn-hapus {
-    padding: 0.2rem 0.9rem;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 0.7rem;
-    font-weight: 600;
-    transition: all 0.3s ease;
-}
-
-.aksi-button .btn-edit {
-    background: #f59e0b;
-    color: var(--white);
-}
-
-.aksi-button .btn-edit:hover {
-    background: #d97706;
-}
-
-.aksi-button .btn-hapus {
-    background: var(--primary);
-    color: var(--white);
-}
-
-.aksi-button .btn-hapus:hover {
-    background: var(--primary-dark);
-}
-
-.riwayat-kosong {
-    text-align: center;
-    padding: 3rem 2rem;
-    background: var(--bg-soft);
-    border-radius: var(--radius-md);
-}
-
-.riwayat-kosong .icon-kosong {
-    font-size: 4rem;
-    margin-bottom: 0.8rem;
-}
-
-.riwayat-kosong p {
-    font-size: 1.05rem;
-    color: var(--text-secondary);
-    margin-bottom: 1.2rem;
-}
-
-.btn-ke-layanan {
-    display: inline-block;
-    background: var(--primary);
-    color: var(--white);
-    padding: 0.6rem 2rem;
-    border-radius: 50px;
-    text-decoration: none;
-    font-weight: 600;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(169, 50, 38, 0.2);
-}
-
-.btn-ke-layanan:hover {
-    transform: scale(1.05);
-    box-shadow: 0 6px 25px rgba(169, 50, 38, 0.3);
-}
-
-/* ============================
-   PESANAN.CSS - Halaman Pesan Janji
-   ============================ */
-#formPesanan {
-    max-width: 660px;
-    margin: 0 auto;
-}
-
-#formPesanan div {
-    margin-bottom: 1.2rem;
-}
-
-#formPesanan label {
-    display: block;
-    font-weight: 600;
-    color: var(--primary);
-    margin-bottom: 0.3rem;
-    font-size: 0.9rem;
-}
-
-#formPesanan input,
-#formPesanan select,
-#formPesanan textarea {
-    width: 100%;
-    padding: 0.8rem 1rem;
-    border: 2px solid var(--border-color);
-    border-radius: var(--radius-sm);
-    font-size: 1rem;
-    font-family: inherit;
-    transition: all 0.3s ease;
-    background: #fafcfd;
-}
-
-#formPesanan input:focus,
-#formPesanan select:focus,
-#formPesanan textarea:focus {
-    outline: none;
-    border-color: var(--primary-light);
-    box-shadow: 0 0 0 4px rgba(192, 57, 43, 0.08);
-}
-
-#btnSubmit {
-    background: linear-gradient(135deg, var(--primary), var(--primary-light));
-    color: var(--white);
-    border: none;
-    padding: 1rem 2.5rem;
-    border-radius: 50px;
-    font-weight: 700;
-    font-size: 1.1rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    width: 100%;
-    box-shadow: 0 4px 20px rgba(192, 57, 43, 0.25);
-}
-
-#btnSubmit:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 32px rgba(192, 57, 43, 0.35);
-}
-
-#pesanSukses {
-    background: #fdf2f0;
-    border: 2px solid var(--primary-light);
-    border-radius: var(--radius-md);
-    padding: 2.5rem;
-    text-align: center;
-}
-
-#pesanSukses h3 {
-    color: var(--primary);
-}
-
-#pesanSukses a {
-    color: var(--primary);
-    font-weight: 600;
-}
-
-#pesanSukses button {
-    background: var(--primary);
-    color: var(--white);
-    border: none;
-    padding: 0.7rem 2rem;
-    border-radius: 50px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-#pesanSukses button:hover {
-    transform: scale(1.03);
-}
-
-/* ============================
-   FOOTER - DIPERBAIKI
-   ============================ */
-footer {
-    background: #2C3E50;
-    color: rgba(255,255,255,0.7);
-    text-align: center;
-    padding: 2rem;
-    margin-top: 3rem;
-    border-top: 4px solid var(--primary);
-}
-
-footer p {
-    margin: 0.2rem 0;
-    font-size: 0.85rem;
-}
-
-footer p:first-child {
-    font-weight: 600;
+.cta-banner-content p {
     color: rgba(255,255,255,0.9);
+    margin: 0.3rem 0 0;
+    font-size: 1rem;
 }
 
-footer p:first-child span {
-    color: #E74C3C;
-}
+/* ================================================================
+   ==================== RESPONSIVE ================================
+   ================================================================ */
 
-/* ============================
-   RESPONSIVE - DIPERLENGKAP
-   ============================ */
 @media (max-width: 768px) {
     .header-left {
         flex-direction: column;
         text-align: center;
     }
-    
     header h1 {
         font-size: 1.6rem;
     }
-    
     nav ul li a {
         padding: 0.6rem 1rem;
         font-size: 0.8rem;
     }
-    
     section {
         padding: 1.5rem;
     }
-    
     .layanan-unggulan-grid {
         grid-template-columns: 1fr;
     }
-    
     .kontak-grid {
         grid-template-columns: 1fr;
     }
-    
     .hero-content {
         flex-direction: column;
         text-align: center;
     }
-    
     .hero h2 {
         font-size: 1.6rem;
     }
-    
     .riwayat-header {
         flex-direction: column;
         align-items: stretch;
     }
-    
     .tabel-riwayat {
         font-size: 0.8rem;
         min-width: 600px;
     }
-    
     .info-grid {
         grid-template-columns: 1fr 1fr;
     }
-    
+
+    /* TAMBAHAN RESPONSIVE */
     .slide {
         padding: 2rem 1.5rem;
     }
-    
     .slide-text h2 {
         font-size: 1.5rem;
     }
-    
     .slider-btn {
         padding: 0.5rem 0.8rem;
         font-size: 1rem;
     }
-    
     .cta-banner-content {
         flex-direction: column;
         text-align: center;
@@ -1092,74 +981,35 @@ footer p:first-child span {
     .info-grid {
         grid-template-columns: 1fr;
     }
-    
     .layanan-grid {
         grid-template-columns: 1fr;
     }
-    
     nav ul li a {
         padding: 0.4rem 0.7rem;
         font-size: 0.7rem;
     }
-    
     .tabel-riwayat {
         font-size: 0.7rem;
         min-width: 480px;
     }
-    
     .tabel-riwayat thead th,
     .tabel-riwayat tbody td {
         padding: 0.4rem 0.5rem;
     }
-    
+
+    /* TAMBAHAN RESPONSIVE */
     .slide-text h2 {
         font-size: 1.2rem;
     }
-    
     .slide-image svg {
         width: 120px;
         height: 120px;
     }
-    
     .slider-btn {
         padding: 0.3rem 0.6rem;
         font-size: 0.8rem;
     }
-    
     .fasilitas-grid {
         grid-template-columns: repeat(2, 1fr);
     }
 }
-
-/* ============================
-   TAMBAHAN: FOCUS STYLE UNTUK AKSESIBILITAS (BARU)
-   ============================ */
-a:focus-visible,
-button:focus-visible,
-input:focus-visible,
-select:focus-visible,
-textarea:focus-visible {
-    outline: 3px solid var(--primary-light);
-    outline-offset: 2px;
-}
-
-/* ============================
-   TAMBAHAN: SCROLLBAR STYLE (BARU)
-   ============================ */
-::-webkit-scrollbar {
-    width: 8px;
-}
-
-::-webkit-scrollbar-track {
-    background: var(--bg-soft);
-}
-
-::-webkit-scrollbar-thumb {
-    background: var(--primary);
-    border-radius: 10px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: var(--primary-dark);
-}
-
