@@ -1,30 +1,23 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <!-- ============================================================
-    META & JUDUL HALAMAN
-    ============================================================ -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>KlinikSehat - Beranda</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <!-- ============================================================
-    HEADER - BAGIAN ATAS HALAMAN
-    Berisi logo, nama klinik, dan tagline.
-    ============================================================ -->
+
+    <!-- ===================== HEADER ===================== -->
     <header>
         <div class="header-container">
             <div class="header-left">
-                <!-- Icon SVG (Simbol Kesehatan / Salib Merah) -->
                 <div class="header-icon">
                     <svg viewBox="0 0 100 100" width="50" height="50">
                         <rect x="35" y="10" width="30" height="80" rx="4" fill="white" />
                         <rect x="10" y="35" width="80" height="30" rx="4" fill="white" />
                     </svg>
                 </div>
-                <!-- Teks Header dengan Animasi -->
                 <div class="header-text">
                     <h1 class="animasi-tulisan">🏥 KlinikSehat</h1>
                     <p class="animasi-tulisan-delay">Sistem Informasi Pelayanan Kesehatan</p>
@@ -33,11 +26,7 @@
         </div>
     </header>
 
-
-    <!-- ============================================================
-    NAVIGASI - MENU UTAMA
-    Link antar halaman: Beranda, Layanan, Pesan Janji, Riwayat
-    ============================================================ -->
+    <!-- ===================== NAVIGASI ===================== -->
     <nav>
         <ul>
             <li><a href="index.html" class="active">Beranda</a></li>
@@ -47,19 +36,13 @@
         </ul>
     </nav>
 
-    <!-- ============================================================
-    MAIN - KONTEN UTAMA HALAMAN
-    ============================================================ -->
+    <!-- ===================== KONTEN UTAMA ===================== -->
     <main>
 
-        <!-- ============================================================
-        SECTION 1: HERO SLIDER - CAROUSEL PROMOSI
-        Menampilkan 3 slide bergantian dengan informasi klinik.
-        ============================================================ -->
+        <!-- ====== HERO SECTION WITH SLIDER ====== -->
         <section class="hero-slider fade-in">
             <div class="slider-container">
-
-                <!-- ===== SLIDE 1: Kesehatan Prioritas ===== -->
+                <!-- Slide 1 -->
                 <div class="slide active">
                     <div class="slide-content">
                         <div class="slide-text">
@@ -68,26 +51,23 @@
                             <p>KlinikSehat siap melayani Anda dengan tenaga medis profesional dan fasilitas modern.</p>
                             <a href="layanan.html" class="btn-primary">Lihat Layanan</a>
                         </div>
-                        <!-- Ilustrasi SVG: Simbol Kesehatan + Jantung -->
                         <div class="slide-image">
                             <svg viewBox="0 0 300 300" width="200" height="200">
-                                <!-- Background lingkaran -->
                                 <circle cx="150" cy="150" r="130" fill="rgba(255,255,255,0.08)" />
-                                <!-- Simbol kesehatan (salib) -->
                                 <rect x="110" y="60" width="80" height="180" rx="12" fill="white" opacity="0.9" />
                                 <rect x="60" y="110" width="180" height="80" rx="12" fill="white" opacity="0.9" />
-                                <!-- Jantung di tengah -->
                                 <path d="M150 190 C90 150, 50 110, 75 80 C90 60, 120 65, 150 90 C180 65, 210 60, 225 80 C250 110, 210 150, 150 190Z" 
                                       fill="#ff6b6b" opacity="0.7" />
-                                <!-- Ornamen plus di sudut -->
                                 <rect x="30" y="30" width="25" height="8" rx="3" fill="white" opacity="0.5" />
                                 <rect x="40" y="20" width="8" height="25" rx="3" fill="white" opacity="0.5" />
+                                <rect x="245" y="30" width="25" height="8" rx="3" fill="white" opacity="0.5" />
+                                <rect x="252" y="20" width="8" height="25" rx="3" fill="white" opacity="0.5" />
                             </svg>
                         </div>
                     </div>
                 </div>
 
-                <!-- ===== SLIDE 2: Dokter Spesialis ===== -->
+                <!-- Slide 2 -->
                 <div class="slide">
                     <div class="slide-content">
                         <div class="slide-text">
@@ -96,7 +76,6 @@
                             <p>Didukung oleh 15+ dokter spesialis yang siap memberikan pelayanan terbaik untuk Anda.</p>
                             <a href="layanan.html" class="btn-primary">Kenali Dokter Kami</a>
                         </div>
-                        <!-- Ilustrasi SVG: Dokter + Stetoskop -->
                         <div class="slide-image">
                             <svg viewBox="0 0 300 300" width="200" height="200">
                                 <circle cx="150" cy="150" r="130" fill="rgba(255,255,255,0.08)" />
@@ -104,12 +83,14 @@
                                 <circle cx="150" cy="120" r="25" fill="#A93226" opacity="0.3" />
                                 <path d="M80 230 Q150 185 220 230" stroke="white" stroke-width="8" fill="none" stroke-linecap="round" opacity="0.9" />
                                 <rect x="120" y="60" width="60" height="120" rx="8" fill="white" opacity="0.7" />
+                                <rect x="110" y="55" width="80" height="15" rx="4" fill="white" opacity="0.9" />
+                                <rect x="110" y="130" width="80" height="15" rx="4" fill="white" opacity="0.9" />
                             </svg>
                         </div>
                     </div>
                 </div>
 
-                <!-- ===== SLIDE 3: Rating Pasien ===== -->
+                <!-- Slide 3 -->
                 <div class="slide">
                     <div class="slide-content">
                         <div class="slide-text">
@@ -118,7 +99,6 @@
                             <p>Ribuan pasien telah merasakan pelayanan terbaik dari KlinikSehat.</p>
                             <a href="pesanan.html" class="btn-primary">Buat Janji Sekarang</a>
                         </div>
-                        <!-- Ilustrasi SVG: Bintang Rating -->
                         <div class="slide-image">
                             <svg viewBox="0 0 300 300" width="200" height="200">
                                 <circle cx="150" cy="150" r="130" fill="rgba(255,255,255,0.08)" />
@@ -132,11 +112,11 @@
                     </div>
                 </div>
 
-                <!-- ===== TOMBOL NAVIGASI SLIDER ===== -->
+                <!-- Slider Controls -->
                 <button class="slider-btn prev" id="sliderPrev">❮</button>
                 <button class="slider-btn next" id="sliderNext">❯</button>
 
-                <!-- ===== INDICATOR DOTS ===== -->
+                <!-- Slider Dots -->
                 <div class="slider-dots">
                     <span class="dot active" data-slide="0"></span>
                     <span class="dot" data-slide="1"></span>
@@ -145,10 +125,7 @@
             </div>
         </section>
 
-        <!-- ============================================================
-        SECTION 2: STATISTIK KLINIK
-        Menampilkan data statistik dalam bentuk grid 4 item.
-        ============================================================ -->
+        <!-- ====== STATISTIK ====== -->
         <section class="fade-in" style="animation-delay: 0.1s;">
             <h2>📊 Statistik Klinik</h2>
             <div class="info-grid">
@@ -158,11 +135,11 @@
                 </div>
                 <div class="info-item">
                     <div class="info-icon">🩺</div>
-                    <span>Penanganan Aman, Cepat dan Terpercaya</span>
+                    <span>20+ Layanan Kesehatan</span>
                 </div>
                 <div class="info-item">
                     <div class="info-icon">📅</div>
-                    <span>Senin-Jumat</span>
+                    <span>Buka Setiap Hari</span>
                 </div>
                 <div class="info-item">
                     <div class="info-icon">⭐</div>
@@ -171,10 +148,7 @@
             </div>
         </section>
 
-        <!-- ============================================================
-        SECTION 3: FASILITAS KLINIK
-        Menampilkan 6 fasilitas klinik dalam bentuk card grid.
-        ============================================================ -->
+        <!-- ====== FASILITAS KLINIK ====== -->
         <section class="fade-in" style="animation-delay: 0.15s;">
             <h2>🏢 Fasilitas Klinik</h2>
             <p style="color: #64748b; margin-bottom: 1.5rem;">Fasilitas modern untuk kenyamanan dan keselamatan pasien.</p>
@@ -192,7 +166,7 @@
                 <div class="fasilitas-item">
                     <div class="fasilitas-icon">🫀</div>
                     <h4>EKG & USG</h4>
-                    <p>Pemeriksaan jantung dan USG 3D</p>
+                    <p>Pemeriksaan jantung dan USG 4D</p>
                 </div>
                 <div class="fasilitas-item">
                     <div class="fasilitas-icon">💊</div>
@@ -212,10 +186,7 @@
             </div>
         </section>
 
-        <!-- ============================================================
-        SECTION 4: LAYANAN UNGGULAN
-        Menampilkan 4 layanan unggulan dalam grid 2x2.
-        ============================================================ -->
+        <!-- ====== LAYANAN UNGGULAN ====== -->
         <section class="fade-in" style="animation-delay: 0.2s;">
             <h2>🌟 Layanan Unggulan</h2>
             <div class="layanan-unggulan-grid">
@@ -242,10 +213,7 @@
             </div>
         </section>
 
-        <!-- ============================================================
-        SECTION 5: KONTAK & LOKASI
-        Menampilkan alamat, telepon, email, website, dan jam buka.
-        ============================================================ -->
+        <!-- ====== KONTAK & LOKASI ====== -->
         <section class="fade-in" style="animation-delay: 0.3s;">
             <h2>📍 Kontak &amp; Lokasi</h2>
             <div class="kontak-grid">
@@ -253,14 +221,14 @@
                     <div class="kontak-icon">📍</div>
                     <div>
                         <span class="kontak-label">Alamat</span>
-                        <span class="kontak-value">Jl. Beringin No. 46 Psr V, Medan</span>
+                        <span class="kontak-value">Jl. Kesehatan No. 45, Kota Medika</span>
                     </div>
                 </div>
                 <div class="kontak-item">
                     <div class="kontak-icon">📞</div>
                     <div>
                         <span class="kontak-label">Telepon</span>
-                        <span class="kontak-value">(061) 555-1284</span>
+                        <span class="kontak-value">(021) 555-7890</span>
                     </div>
                 </div>
                 <div class="kontak-item">
@@ -281,16 +249,13 @@
                     <div class="kontak-icon">🕐</div>
                     <div>
                         <span class="kontak-label">Jam Buka</span>
-                        <span class="kontak-value">Senin - Jumat, 07.00 - 21.00 WIB</span>
+                        <span class="kontak-value">Senin - Minggu, 07.00 - 21.00 WIB</span>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- ============================================================
-        SECTION 6: CTA BANNER - CALL TO ACTION
-        Mengajak pengguna untuk membuat janji.
-        ============================================================ -->
+        <!-- ====== CTA BANNER ====== -->
         <section class="cta-banner fade-in" style="animation-delay: 0.4s;">
             <div class="cta-banner-content">
                 <div>
@@ -305,14 +270,13 @@
 
     </main>
 
-   <!-- ============================================================
-    FOOTER - BAGIAN BAWAH HALAMAN
-    Informasi hak cipta dan kontak.
-    ============================================================ -->
+    <!-- ===================== FOOTER ===================== -->
     <footer>
         <p>&copy; 2026 <span>KlinikSehat</span> - Sistem Informasi Pelayanan Kesehatan</p>
-        <p>Jl. Beringin No. 46 Psr V, Kota Medan | (061) 555-1284 | info@kliniksehat.id</p>
+        <p>Jl. Kesehatan No. 45, Kota Medika | (021) 555-7890 | info@kliniksehat.id</p>
     </footer>
 
+    <!-- ===================== JAVASCRIPT ===================== -->
+    <script src="js/script.js"></script>
 </body>
 </html>
