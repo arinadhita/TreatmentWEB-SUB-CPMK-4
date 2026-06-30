@@ -134,8 +134,6 @@ document.addEventListener('DOMContentLoaded', function() {
  * 3. Data harga berdasarkan layanan
  * 4. Mode edit (dari riwayat)
  * 
- * Penulis: KlinikSehat Team
- * Tanggal: 2026
  * ================================================================
  */
 
@@ -221,18 +219,12 @@ function setupLayananDokter() {
         const layanan = this.value;
         pilihDokter.innerHTML = '';
         
-        if (layanan === '') {
-            const option = document.createElement('option');
-            option.value = '';
-            option.textContent = '-- Pilih Layanan Terlebih Dahulu --';
-            pilihDokter.appendChild(option);
+        if (!layanan) {
+            pilihDokter.innerHTML = '<option value="">-- Pilih Layanan Terlebih Dahulu --</option>';
             return;
         }
         
-        const defaultOption = document.createElement('option');
-        defaultOption.value = '';
-        defaultOption.textContent = '-- Pilih Dokter --';
-        pilihDokter.appendChild(defaultOption);
+        pilihDokter.innerHTML = '<option value="">-- Pilih Dokter --</option>';
         
         const daftarDokter = dataDokter[layanan] || [];
         for (let i = 0; i < daftarDokter.length; i++) {
@@ -242,50 +234,10 @@ function setupLayananDokter() {
             pilihDokter.appendChild(option);
         }
     });
-}
-
-// Cek mode edit
-function cekModeEdit() {
-    if (!isPesananPage()) return;
     
-    const urlParams = new URLSearchParams(window.location.search);
-    const editId = urlParams.get('edit');
-    
-    if (editId) {
-        let riwayat = localStorage.getItem('kliniksehat_riwayat');
-        riwayat = riwayat ? JSON.parse(riwayat) : [];
-        
-        let dataEdit = null;
-        for (let i = 0; i < riwayat.length; i++) {
-            if (riwayat[i].id === editId) {
-                dataEdit = riwayat[i];
-                break;
-            }
-        }
-        
-        if (dataEdit) {
-            document.getElementById('namaPasien').value = dataEdit.nama;
-            document.getElementById('nomorPonsel').value = dataEdit.telepon;
-            document.getElementById('pilihLayanan').value = dataEdit.layanan;
-            document.getElementById('tanggalJanji').value = dataEdit.tanggal;
-            document.getElementById('waktuJanji').value = dataEdit.waktu;
-            document.getElementById('catatanTambahan').value = dataEdit.catatan || '';
-            
-            const event = new Event('change');
-            document.getElementById('pilihLayanan').dispatchEvent(event);
-            
-            setTimeout(function() {
-                document.getElementById('pilihDokter').value = dataEdit.dokter;
-            }, 100);
-            
-            const btnSubmit = document.getElementById('btnSubmit');
-            if (btnSubmit) {
-                btnSubmit.textContent = '✏️ Update Janji';
-            }
-            
-            document.getElementById('formPesanan').dataset.editId = editId;
-            console.log('✏️ Mode Edit: ' + editId);
-        }
+    // Trigger sekali jika ada value
+    if (pilihLayanan.value) {
+        pilihLayanan.dispatchEvent(new Event('change'));
     }
 }
 
@@ -389,36 +341,6 @@ document.addEventListener('DOMContentLoaded', function() {
  * Saat ini hanya placeholder untuk pengembangan selanjutnya.
  * ================================================================
  */
-
-// ============================================================
-// DATA HARGA BERDASARKAN LAYANAN
-// ============================================================
-// Objek yang berisi harga setiap layanan.
-// Key = nama layanan, Value = harga dalam Rupiah.
-// Digunakan saat menyimpan data janji.
-const hargaList = {
-    'Konsultasi Umum': 150000,
-    'Konsultasi Jantung': 350000,
-    'Perawatan Gigi': 200000,
-    'Konsultasi Anak': 200000,
-    'Konsultasi Psikologi': 250000,
-    'Vaksinasi': 100000,
-    'Laboratorium': 180000,
-    'Rontgen / USG': 300000
-};
-
-// ============================================================
-// FUNGSI FORMAT TANGGAL
-// ============================================================
-// Mengubah format tanggal dari YYYY-MM-DD ke format Indonesia
-// Contoh: "2026-06-24" -> "24 Juni 2026"
-function formatTanggal(str) {
-    if (!str) return '';
-    const d = new Date(str + 'T00:00:00');
-    const bulan = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 
-                   'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
-    return d.getDate() + ' ' + bulan[d.getMonth()] + ' ' + d.getFullYear();
-}
 
 document.addEventListener('DOMContentLoaded', function() {
     console.log('🏥 KlinikSehat - Layanan siap');
