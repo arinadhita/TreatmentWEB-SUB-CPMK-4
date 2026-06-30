@@ -1,4 +1,24 @@
 /* ============================
+   ROOT VARIABLES (BARU)
+   ============================ */
+:root {
+    --primary: #A93226;
+    --primary-dark: #8B231B;
+    --primary-light: #C0392B;
+    --primary-gradient: linear-gradient(135deg, #A93226, #C0392B, #E74C3C);
+    --bg-soft: #F8F6F5;
+    --border-color: #e9edf2;
+    --text-primary: #2C3E50;
+    --text-secondary: #64748b;
+    --white: #ffffff;
+    --shadow-sm: 0 4px 20px rgba(0,0,0,0.02);
+    --shadow-md: 0 8px 32px rgba(0,0,0,0.05);
+    --radius-lg: 20px;
+    --radius-md: 16px;
+    --radius-sm: 14px;
+}
+
+/* ============================
    RESET & BASE STYLES
    ============================ */
 * {
@@ -9,8 +29,8 @@
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: #fdf6f6;
-    color: #2d2d2d;
+    background: var(--bg-soft);
+    color: var(--text-primary);
     line-height: 1.6;
     min-height: 100vh;
     position: relative;
@@ -24,8 +44,8 @@ a {
    HEADER - SOFT RED
    ============================ */
 header {
-    background: linear-gradient(135deg, #c62828, #d32f2f, #e57373);
-    color: white;
+    background: var(--primary-gradient);
+    color: var(--white);
     padding: 2rem 2rem 1.8rem;
     text-align: left;
     position: relative;
@@ -33,72 +53,66 @@ header {
     border-bottom: 4px solid rgba(255, 255, 255, 0.3);
 }
 
-/* Container header */
 .header-container {
     max-width: 1200px;
     margin: 0 auto;
 }
 
-/* Flex untuk logo dan teks header */
 .header-left {
     display: flex;
     align-items: center;
     gap: 1.2rem;
 }
 
-/* Icon header dengan efek glass */
 .header-icon {
     background: rgba(255,255,255,0.15);
     padding: 0.5rem;
     border-radius: 14px;
     backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px); /* Tambahan untuk Safari */
 }
 
-/* Judul header */
 .header-text h1 {
     font-size: 2rem;
     font-weight: 700;
     letter-spacing: -0.5px;
 }
 
-/* Subtitle header */
 .header-text p {
     font-weight: 300;
     opacity: 0.85;
     font-size: 0.95rem;
 }
 
-/* ============================================================
+/* ============================
    ANIMASI HEADER
-   ============================================================ */
-/* Animasi slide down untuk judul */
+   ============================ */
 .animasi-tulisan {
     animation: slideDown 0.6s ease forwards;
     opacity: 0;
 }
-/* Animasi slide down dengan delay untuk subtitle */
+
 .animasi-tulisan-delay {
     animation: slideDown 0.6s ease forwards;
     animation-delay: 0.2s;
     opacity: 0;
 }
 
-/* Keyframe animasi slide down */
 @keyframes slideDown {
     from { opacity: 0; transform: translateY(-16px); }
     to { opacity: 1; transform: translateY(0); }
 }
 
 /* ============================
-   NAVIGASI - SOFT RED
+   NAVIGASI - DIPERBAIKI (Background Putih)
    ============================ */
 nav {
-    background: linear-gradient(135deg, #8e0000, #b71c1c);
-    padding: 0;
+    background: var(--white); /* ✅ DIPERBAIKI: dari merah jadi putih */
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+    border-bottom: 1px solid var(--border-color);
     position: sticky;
     top: 0;
     z-index: 100;
-    box-shadow: 0 4px 20px rgba(183, 28, 28, 0.15);
 }
 
 nav ul {
@@ -114,7 +128,7 @@ nav ul {
 nav ul li a {
     display: block;
     padding: 0.9rem 1.8rem;
-    color: #475569;
+    color: #475569; /* ✅ TETAP: sudah terbaca di background putih */
     font-weight: 500;
     font-size: 0.9rem;
     transition: all 0.3s ease;
@@ -123,8 +137,8 @@ nav ul li a {
 
 nav ul li a:hover,
 nav ul li a.active {
-    color: #C0392B;
-    border-bottom-color: #C0392B;
+    color: var(--primary-light);
+    border-bottom-color: var(--primary-light);
     background: rgba(192, 57, 43, 0.04);
 }
 
@@ -138,21 +152,21 @@ main {
 }
 
 section {
-    background: white;
+    background: var(--white);
     padding: 2.2rem 2.5rem;
-    border-radius: 20px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
     margin-bottom: 2rem;
     border: 1px solid #eef2f6;
     transition: box-shadow 0.3s ease;
 }
 
 section:hover {
-    box-shadow: 0 8px 32px rgba(0,0,0,0.05);
+    box-shadow: var(--shadow-md);
 }
 
 section h2 {
-    color: #A93226;
+    color: var(--primary);
     margin-bottom: 1rem;
     font-size: 1.6rem;
     font-weight: 700;
@@ -164,12 +178,14 @@ section h2::after {
     display: block;
     width: 50px;
     height: 4px;
-    background: linear-gradient(135deg, #A93226, #E74C3C);
+    background: linear-gradient(135deg, var(--primary), #E74C3C);
     border-radius: 4px;
     margin-top: 0.3rem;
 }
 
-/* Fade In Animation - Shared */
+/* ============================
+   FADE IN ANIMATION - Class terpisah (BARU)
+   ============================ */
 .fade-in {
     opacity: 0;
     animation: fadeInUp 0.7s ease forwards;
@@ -180,13 +196,13 @@ section h2::after {
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* ============================================================
+/* ============================
    BUTTON PRIMARY - SHARED
-   ============================================================ */
+   ============================ */
 .btn-primary {
     display: inline-block;
-    background: white;
-    color: #A93226;
+    background: var(--white);
+    color: var(--primary);
     padding: 0.8rem 2.5rem;
     border-radius: 50px;
     font-weight: 700;
@@ -204,11 +220,11 @@ section h2::after {
    HERO SECTION - SOFT RED
    ============================ */
 .hero {
-    background: linear-gradient(135deg, #c62828, #d32f2f, #e57373);
-    color: white;
+    background: var(--primary-gradient);
+    color: var(--white);
     text-align: center;
     padding: 4rem 3rem;
-    border-radius: 16px;
+    border-radius: var(--radius-md);
     border: none;
     position: relative;
     overflow: hidden;
@@ -238,7 +254,7 @@ section h2::after {
 }
 
 .hero h2 {
-    color: white;
+    color: var(--white);
     font-size: 2.2rem;
     font-weight: 700;
 }
@@ -258,6 +274,93 @@ section h2::after {
 }
 
 /* ============================
+   LAYANAN UNGGULAN 2x2 GRID (BARU)
+   ============================ */
+.layanan-unggulan-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.2rem;
+    margin-top: 1.2rem;
+}
+
+.layanan-unggulan-grid .layanan-card {
+    background: var(--bg-soft);
+    border-radius: var(--radius-md);
+    padding: 1.8rem 1.5rem;
+    text-align: center;
+    border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+}
+
+.layanan-unggulan-grid .layanan-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--primary-light);
+    box-shadow: 0 8px 28px rgba(192, 57, 43, 0.06);
+}
+
+.layanan-unggulan-grid .layanan-icon {
+    font-size: 2.6rem;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.layanan-unggulan-grid .layanan-card h3 {
+    color: var(--primary);
+    font-size: 1.1rem;
+    margin: 0.3rem 0;
+}
+
+.layanan-unggulan-grid .layanan-card p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+/* ============================
+   KONTAK GRID (BARU)
+   ============================ */
+.kontak-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.kontak-item {
+    background: var(--bg-soft);
+    padding: 1rem 1.5rem;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    transition: all 0.3s ease;
+}
+
+.kontak-item:hover {
+    border-color: var(--primary-light);
+}
+
+.kontak-icon {
+    font-size: 1.6rem;
+    min-width: 40px;
+}
+
+.kontak-label {
+    font-weight: 600;
+    color: var(--primary);
+    font-size: 0.75rem;
+    display: block;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.kontak-value {
+    color: var(--text-primary);
+    font-weight: 500;
+    display: block;
+}
+
+/* ============================
    STATS / INFO GRID
    ============================ */
 .info-grid {
@@ -268,17 +371,17 @@ section h2::after {
 }
 
 .info-item {
-    background: #F8F6F5;
+    background: var(--bg-soft);
     padding: 1.5rem 1rem;
-    border-radius: 16px;
+    border-radius: var(--radius-md);
     text-align: center;
-    border: 1px solid #e9edf2;
+    border: 1px solid var(--border-color);
     transition: all 0.3s ease;
 }
 
 .info-item:hover {
     transform: translateY(-4px);
-    border-color: #C0392B;
+    border-color: var(--primary-light);
     box-shadow: 0 8px 24px rgba(192, 57, 43, 0.06);
 }
 
@@ -290,7 +393,7 @@ section h2::after {
 
 .info-item span {
     font-weight: 600;
-    color: #A93226;
+    color: var(--primary);
 }
 
 /* ============================
@@ -304,17 +407,17 @@ section h2::after {
 }
 
 .fasilitas-item {
-    background: #F8F6F5;
+    background: var(--bg-soft);
     padding: 1.5rem 1rem;
-    border-radius: 16px;
+    border-radius: var(--radius-md);
     text-align: center;
-    border: 1px solid #e9edf2;
+    border: 1px solid var(--border-color);
     transition: all 0.3s ease;
 }
 
 .fasilitas-item:hover {
     transform: translateY(-4px);
-    border-color: #C0392B;
+    border-color: var(--primary-light);
     box-shadow: 0 8px 24px rgba(192, 57, 43, 0.06);
 }
 
@@ -325,23 +428,23 @@ section h2::after {
 }
 
 .fasilitas-item h4 {
-    color: #A93226;
+    color: var(--primary);
     font-size: 0.95rem;
     margin: 0.3rem 0;
 }
 
 .fasilitas-item p {
-    color: #64748b;
+    color: var(--text-secondary);
     font-size: 0.8rem;
     margin: 0;
 }
 
 /* ============================
-   CTA BANNER
+   CTA BANNER (BARU)
    ============================ */
 .cta-banner {
-    background: linear-gradient(135deg, #A93226, #C0392B);
-    border-radius: 20px;
+    background: linear-gradient(135deg, var(--primary), var(--primary-light));
+    border-radius: var(--radius-lg);
     padding: 2.5rem 3rem;
     border: none;
 }
@@ -355,7 +458,7 @@ section h2::after {
 }
 
 .cta-banner-content h2 {
-    color: white;
+    color: var(--white);
     font-size: 1.6rem;
     margin: 0;
 }
@@ -371,11 +474,11 @@ section h2::after {
 }
 
 /* ============================
-   SLIDER / CAROUSEL
+   SLIDER / CAROUSEL - DIPERLENGKAP
    ============================ */
 .hero-slider {
-    background: linear-gradient(135deg, #A93226, #C0392B);
-    border-radius: 20px;
+    background: linear-gradient(135deg, var(--primary), var(--primary-light));
+    border-radius: var(--radius-lg);
     padding: 0;
     overflow: hidden;
     border: none;
@@ -415,7 +518,7 @@ section h2::after {
 .slide-text {
     flex: 1;
     min-width: 250px;
-    color: white;
+    color: var(--white);
 }
 
 .slide-badge {
@@ -427,11 +530,12 @@ section h2::after {
     font-weight: 600;
     margin-bottom: 0.8rem;
     backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
     border: 1px solid rgba(255,255,255,0.1);
 }
 
 .slide-text h2 {
-    color: white;
+    color: var(--white);
     font-size: 2rem;
     margin-bottom: 0.8rem;
 }
@@ -456,13 +560,14 @@ section h2::after {
     top: 50%;
     transform: translateY(-50%);
     background: rgba(255,255,255,0.15);
-    color: white;
+    color: var(--white);
     border: none;
     padding: 0.8rem 1.2rem;
     font-size: 1.2rem;
     cursor: pointer;
     border-radius: 50%;
     backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
     transition: all 0.3s ease;
     border: 1px solid rgba(255,255,255,0.1);
     z-index: 10;
@@ -500,66 +605,13 @@ section h2::after {
 }
 
 .dot.active {
-    background: white;
+    background: var(--white);
     width: 25px;
     border-radius: 10px;
 }
 
 /* ============================
-   RESPONSIVE INDEX
-   ============================ */
-@media (max-width: 768px) {
-    .hero-content {
-        flex-direction: column;
-        text-align: center;
-    }
-    .hero h2 {
-        font-size: 1.6rem;
-    }
-    .info-grid {
-        grid-template-columns: 1fr 1fr;
-    }
-    .slide {
-        padding: 2rem 1.5rem;
-    }
-    .slide-text h2 {
-        font-size: 1.5rem;
-    }
-    .slider-btn {
-        padding: 0.5rem 0.8rem;
-        font-size: 1rem;
-    }
-    .cta-banner-content {
-        flex-direction: column;
-        text-align: center;
-    }
-}
-
-@media (max-width: 480px) {
-    .info-grid {
-        grid-template-columns: 1fr;
-    }
-    .slide-text h2 {
-        font-size: 1.2rem;
-    }
-    .slide-image svg {
-        width: 120px;
-        height: 120px;
-    }
-    .slider-btn {
-        padding: 0.3rem 0.6rem;
-        font-size: 0.8rem;
-    }
-    .fasilitas-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-/* ============================================================
    LAYANAN.CSS - Halaman Layanan
-   ============================================================ */
-/* ============================
-   LAYANAN GRID (dengan gambar)
    ============================ */
 .layanan-grid {
     display: grid;
@@ -569,11 +621,11 @@ section h2::after {
 }
 
 .layanan-card {
-    border-radius: 16px;
+    border-radius: var(--radius-md);
     overflow: hidden;
-    border: 1px solid #e9edf2;
+    border: 1px solid var(--border-color);
     transition: all 0.3s ease;
-    background: white;
+    background: var(--white);
 }
 
 .layanan-card:hover {
@@ -596,12 +648,12 @@ section h2::after {
     right: 0;
     padding: 1.2rem 1rem 0.8rem;
     background: linear-gradient(transparent, rgba(169, 50, 38, 0.85));
-    color: white;
+    color: var(--white);
     text-align: center;
 }
 
 .layanan-overlay h3 {
-    color: white;
+    color: var(--white);
     font-size: 1.05rem;
     font-weight: 700;
     margin: 0 0 0.1rem;
@@ -617,6 +669,7 @@ section h2::after {
     display: inline-block;
     background: rgba(255,255,255,0.2);
     backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
     padding: 0.15rem 1rem;
     border-radius: 20px;
     font-weight: 700;
@@ -627,94 +680,59 @@ section h2::after {
 /* ============================
    CTA SECTION LAYANAN
    ============================ */
-/* Menjaga background tetap merah gradasi khas KlinikSehat */
 .cta-section {
-    background: linear-gradient(135deg, #A93226, #C0392B);
-    color: white;
+    background: linear-gradient(135deg, var(--primary), var(--primary-light));
+    color: var(--white);
     text-align: center;
     padding: 3.5rem 2rem;
-    border-radius: 20px;
+    border-radius: var(--radius-lg);
     border: none;
     margin-top: 2rem;
     display: flex;
     flex-direction: column;
-    align-items: left; /* Membuat tombol capsule otomatis berada di tengah */
+    align-items: center;
     justify-content: center;
 }
 
 .cta-section h2 {
-    color: white;
+    color: var(--white);
     margin-bottom: 0.5rem;
 }
 
-/* Desain tombol capsule putih tulisan merah kecokelatan */
+.cta-section h2::after {
+    background: rgba(255,255,255,0.3);
+    margin: 0.3rem auto 0;
+}
+
+.cta-section p {
+    opacity: 0.9;
+    margin-bottom: 1.2rem;
+}
+
 .btn-janji-capsule {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 10px; /* Jarak antara emoji kalender dan teks */
-    
-    background-color: #ffffff; /* Latar belakang tombol tetap putih bersih */
-    color: #A93226; /* Warna teks merah kecokelatan */
-    
-    padding: 0.8rem 2.5rem; /* Mengatur ukuran tombol agar lonjong pas */
+    gap: 10px;
+    background-color: #ffffff;
+    color: var(--primary);
+    padding: 0.8rem 2.5rem;
     font-size: 1.05rem;
     font-weight: 600;
-    text-decoration: none; /* Menghilangkan garis bawah tautan */
-    
-    border-radius: 50px; /* Membuat bentuk kapsul melengkung sempurna */
+    text-decoration: none;
+    border-radius: 50px;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15); /* Efek bayangan di atas background merah */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
 }
 
-/* Efek interaktif hover ketika kursor menyentuh tombol capsule */
 .btn-janji-capsule:hover {
-    transform: translateY(-3px); /* Tombol sedikit mengangkat naik */
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25); /* Bayangan menjadi lebih tegas */
-    background-color: #f8fafc; /* Warna putih tombol sedikit redup halus */
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+    background-color: #f8fafc;
 }
+
 /* ============================
-   RESPONSIVE LAYANAN
-   ============================ */
-@media (max-width: 768px) {
-    .layanan-grid {
-        grid-template-columns: 1fr;
-    }
-}
-
-@media (max-width: 480px) {
-    .layanan-grid {
-        grid-template-columns: 1fr;
-    }
-}
-
-footer {
-    /* Warna latar biru gelap sesuai gambar */
-    background-color: #2c3e50; 
-    color: #ffffff;
-    text-align: center;
-    padding: 2.5rem 2rem;
-    margin-top: 0;
-    
-    /* Garis merah di bagian atas footer */
-    border-top: 5px solid #c0392b; 
-}
-
-footer p {
-    margin: 0.3rem 0;
-    font-size: 0.95rem;
-}
-
-/* Agar tulisan "KlinikSehat" berwarna merah sesuai contoh */
-footer .brand-highlight {
-    color: #e74c3c;
-    font-weight: bold;
-}
-/* ============================================================
    RIWAYAT.CSS - Halaman Riwayat
-   ============================================================ */
-/* ============================
-   RIWAYAT HEADER
    ============================ */
 .riwayat-header {
     display: flex;
@@ -725,8 +743,8 @@ footer .brand-highlight {
 }
 
 #btnHapusSemua {
-    background: #A93226;
-    color: white;
+    background: var(--primary);
+    color: var(--white);
     border: none;
     padding: 0.6rem 1.8rem;
     border-radius: 50px;
@@ -737,18 +755,15 @@ footer .brand-highlight {
 }
 
 #btnHapusSemua:hover {
-    background: #8B231B;
+    background: var(--primary-dark);
     transform: scale(1.02);
 }
 
-/* ============================
-   TABEL RIWAYAT
-   ============================ */
 .tabel-wrapper {
     overflow-x: auto;
     margin-top: 1rem;
-    border-radius: 16px;
-    border: 1px solid #e9edf2;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-color);
 }
 
 .tabel-riwayat {
@@ -759,8 +774,8 @@ footer .brand-highlight {
 }
 
 .tabel-riwayat thead {
-    background: #A93226;
-    color: white;
+    background: var(--primary);
+    color: var(--white);
 }
 
 .tabel-riwayat thead th {
@@ -770,11 +785,11 @@ footer .brand-highlight {
 }
 
 .tabel-riwayat tbody tr {
-    border-bottom: 1px solid #e9edf2;
+    border-bottom: 1px solid var(--border-color);
 }
 
 .tabel-riwayat tbody tr:hover {
-    background: #F8F6F5;
+    background: var(--bg-soft);
 }
 
 .tabel-riwayat tbody td {
@@ -785,8 +800,8 @@ footer .brand-highlight {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    background: #A93226;
-    color: white;
+    background: var(--primary);
+    color: var(--white);
     width: 26px;
     height: 26px;
     border-radius: 50%;
@@ -796,12 +811,12 @@ footer .brand-highlight {
 
 .tabel-riwayat .nama-pasien {
     font-weight: 600;
-    color: #A93226;
+    color: var(--primary);
 }
 
 .tabel-riwayat .badge-status {
     background: #fdf2f0;
-    color: #A93226;
+    color: var(--primary);
     padding: 0.2rem 1rem;
     border-radius: 50px;
     font-size: 0.7rem;
@@ -810,12 +825,9 @@ footer .brand-highlight {
 
 .tabel-riwayat .harga-text {
     font-weight: 700;
-    color: #A93226;
+    color: var(--primary);
 }
 
-/* ============================
-   TOMBOL AKSI
-   ============================ */
 .aksi-button {
     display: flex;
     gap: 0.4rem;
@@ -835,7 +847,7 @@ footer .brand-highlight {
 
 .aksi-button .btn-edit {
     background: #f59e0b;
-    color: white;
+    color: var(--white);
 }
 
 .aksi-button .btn-edit:hover {
@@ -843,22 +855,19 @@ footer .brand-highlight {
 }
 
 .aksi-button .btn-hapus {
-    background: #A93226;
-    color: white;
+    background: var(--primary);
+    color: var(--white);
 }
 
 .aksi-button .btn-hapus:hover {
-    background: #8B231B;
+    background: var(--primary-dark);
 }
 
-/* ============================
-   RIWAYAT KOSONG
-   ============================ */
 .riwayat-kosong {
     text-align: center;
     padding: 3rem 2rem;
-    background: #F8F6F5;
-    border-radius: 16px;
+    background: var(--bg-soft);
+    border-radius: var(--radius-md);
 }
 
 .riwayat-kosong .icon-kosong {
@@ -868,14 +877,14 @@ footer .brand-highlight {
 
 .riwayat-kosong p {
     font-size: 1.05rem;
-    color: #64748b;
+    color: var(--text-secondary);
     margin-bottom: 1.2rem;
 }
 
 .btn-ke-layanan {
     display: inline-block;
-    background: #A93226;
-    color: white;
+    background: var(--primary);
+    color: var(--white);
     padding: 0.6rem 2rem;
     border-radius: 50px;
     text-decoration: none;
@@ -890,36 +899,7 @@ footer .brand-highlight {
 }
 
 /* ============================
-   RESPONSIVE RIWAYAT
-   ============================ */
-@media (max-width: 768px) {
-    .riwayat-header {
-        flex-direction: column;
-        align-items: stretch;
-    }
-    .tabel-riwayat {
-        font-size: 0.8rem;
-        min-width: 600px;
-    }
-}
-
-@media (max-width: 480px) {
-    .tabel-riwayat {
-        font-size: 0.7rem;
-        min-width: 480px;
-    }
-    .tabel-riwayat thead th,
-    .tabel-riwayat tbody td {
-        padding: 0.4rem 0.5rem;
-    }
-}
-
-/* ============================================================
    PESANAN.CSS - Halaman Pesan Janji
-   ============================================================ */
-
-/* ============================
-   FORM
    ============================ */
 #formPesanan {
     max-width: 660px;
@@ -933,7 +913,7 @@ footer .brand-highlight {
 #formPesanan label {
     display: block;
     font-weight: 600;
-    color: #A93226;
+    color: var(--primary);
     margin-bottom: 0.3rem;
     font-size: 0.9rem;
 }
@@ -943,8 +923,8 @@ footer .brand-highlight {
 #formPesanan textarea {
     width: 100%;
     padding: 0.8rem 1rem;
-    border: 2px solid #e9edf2;
-    border-radius: 14px;
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-sm);
     font-size: 1rem;
     font-family: inherit;
     transition: all 0.3s ease;
@@ -955,13 +935,13 @@ footer .brand-highlight {
 #formPesanan select:focus,
 #formPesanan textarea:focus {
     outline: none;
-    border-color: #C0392B;
+    border-color: var(--primary-light);
     box-shadow: 0 0 0 4px rgba(192, 57, 43, 0.08);
 }
 
 #btnSubmit {
-    background: linear-gradient(135deg, #A93226, #C0392B);
-    color: white;
+    background: linear-gradient(135deg, var(--primary), var(--primary-light));
+    color: var(--white);
     border: none;
     padding: 1rem 2.5rem;
     border-radius: 50px;
@@ -978,29 +958,26 @@ footer .brand-highlight {
     box-shadow: 0 8px 32px rgba(192, 57, 43, 0.35);
 }
 
-/* ============================
-   PESAN SUKSES
-   ============================ */
 #pesanSukses {
     background: #fdf2f0;
-    border: 2px solid #C0392B;
-    border-radius: 16px;
+    border: 2px solid var(--primary-light);
+    border-radius: var(--radius-md);
     padding: 2.5rem;
     text-align: center;
 }
 
 #pesanSukses h3 {
-    color: #A93226;
+    color: var(--primary);
 }
 
 #pesanSukses a {
-    color: #A93226;
+    color: var(--primary);
     font-weight: 600;
 }
 
 #pesanSukses button {
-    background: #A93226;
-    color: white;
+    background: var(--primary);
+    color: var(--white);
     border: none;
     padding: 0.7rem 2rem;
     border-radius: 50px;
@@ -1012,11 +989,176 @@ footer .brand-highlight {
 #pesanSukses button:hover {
     transform: scale(1.03);
 }
+
 /* ============================
-   RESPONSIVE PESANAN
+   FOOTER - DIPERBAIKI
+   ============================ */
+footer {
+    background: #2C3E50;
+    color: rgba(255,255,255,0.7);
+    text-align: center;
+    padding: 2rem;
+    margin-top: 3rem;
+    border-top: 4px solid var(--primary);
+}
+
+footer p {
+    margin: 0.2rem 0;
+    font-size: 0.85rem;
+}
+
+footer p:first-child {
+    font-weight: 600;
+    color: rgba(255,255,255,0.9);
+}
+
+footer p:first-child span {
+    color: #E74C3C;
+}
+
+/* ============================
+   RESPONSIVE - DIPERLENGKAP
    ============================ */
 @media (max-width: 768px) {
-    #formPesanan {
-        padding: 0 1rem;
+    .header-left {
+        flex-direction: column;
+        text-align: center;
     }
+    
+    header h1 {
+        font-size: 1.6rem;
+    }
+    
+    nav ul li a {
+        padding: 0.6rem 1rem;
+        font-size: 0.8rem;
+    }
+    
+    section {
+        padding: 1.5rem;
+    }
+    
+    .layanan-unggulan-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .kontak-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .hero-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .hero h2 {
+        font-size: 1.6rem;
+    }
+    
+    .riwayat-header {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .tabel-riwayat {
+        font-size: 0.8rem;
+        min-width: 600px;
+    }
+    
+    .info-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+    
+    .slide {
+        padding: 2rem 1.5rem;
+    }
+    
+    .slide-text h2 {
+        font-size: 1.5rem;
+    }
+    
+    .slider-btn {
+        padding: 0.5rem 0.8rem;
+        font-size: 1rem;
+    }
+    
+    .cta-banner-content {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .info-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .layanan-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    nav ul li a {
+        padding: 0.4rem 0.7rem;
+        font-size: 0.7rem;
+    }
+    
+    .tabel-riwayat {
+        font-size: 0.7rem;
+        min-width: 480px;
+    }
+    
+    .tabel-riwayat thead th,
+    .tabel-riwayat tbody td {
+        padding: 0.4rem 0.5rem;
+    }
+    
+    .slide-text h2 {
+        font-size: 1.2rem;
+    }
+    
+    .slide-image svg {
+        width: 120px;
+        height: 120px;
+    }
+    
+    .slider-btn {
+        padding: 0.3rem 0.6rem;
+        font-size: 0.8rem;
+    }
+    
+    .fasilitas-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* ============================
+   TAMBAHAN: FOCUS STYLE UNTUK AKSESIBILITAS (BARU)
+   ============================ */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+    outline: 3px solid var(--primary-light);
+    outline-offset: 2px;
+}
+
+/* ============================
+   TAMBAHAN: SCROLLBAR STYLE (BARU)
+   ============================ */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-soft);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--primary);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-dark);
 }
