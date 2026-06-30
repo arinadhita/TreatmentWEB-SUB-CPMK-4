@@ -128,7 +128,7 @@ nav ul {
 nav ul li a {
     display: block;
     padding: 0.9rem 1.8rem;
-    color: #475569; /* ✅ TETAP: sudah terbaca di background putih */
+    color: #475569; 
     font-weight: 500;
     font-size: 0.9rem;
     transition: all 0.3s ease;
@@ -1162,3 +1162,4 @@ textarea:focus-visible {
 ::-webkit-scrollbar-thumb:hover {
     background: var(--primary-dark);
 }
+
